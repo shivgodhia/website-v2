@@ -1,79 +1,74 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import { FormattedIcon } from '@components/icons';
-import { socialMedia } from '@config';
 import styled from 'styled-components';
-import { theme, mixins, media } from '@styles';
-const { colors, fontSizes, fonts } = theme;
+import { Icon } from '@components/icons';
+import { socialMedia } from '@config';
 
-const StyledContainer = styled.footer`
-  ${mixins.flexCenter};
+const StyledFooter = styled.footer`
+  ${({ theme }) => theme.mixins.flexCenter};
   flex-direction: column;
-  padding: 15px;
-  text-align: center;
   height: auto;
   min-height: 70px;
+  padding: 15px;
+  text-align: center;
 `;
-const StyledSocial = styled.div`
-  color: ${colors.lightSlate};
-  width: 100%;
-  max-width: 270px;
-  margin: 0 auto 10px;
+
+const StyledSocialLinks = styled.div`
   display: none;
-  ${media.tablet`display: block;`};
-`;
-const StyledSocialList = styled.ul`
-  ${mixins.flexBetween};
-  padding: 0;
-  margin: 0;
-  list-style: none;
-`;
-const StyledSocialLink = styled.a`
-  padding: 10px;
-  svg {
-    width: 20px;
-    height: 20px;
+
+  @media (max-width: 768px) {
+    display: block;
+    width: 100%;
+    max-width: 270px;
+    margin: 0 auto 10px;
+    color: var(--light-slate);
+  }
+
+  ul {
+    ${({ theme }) => theme.mixins.flexBetween};
+    padding: 0;
+    margin: 0;
+    list-style: none;
+
+    a {
+      padding: 10px;
+      svg {
+        width: 20px;
+        height: 20px;
+      }
+    }
   }
 `;
-const StyledMetadata = styled.div`
-  font-family: ${fonts.SFMono};
-  color: ${colors.lightSlate};
-  font-size: ${fontSizes.xs};
+
+const StyledCredit = styled.div`
+  color: var(--light-slate);
+  font-family: var(--font-mono);
+  font-size: var(--fz-xxs);
   line-height: 1;
+
+  a {
+    padding: 10px;
+  }
 `;
-const StyledGitHubLink = styled.a``;
 
 const Footer = () => (
-  <StyledContainer>
-    <StyledSocial>
-      <StyledSocialList>
+  <StyledFooter>
+    <StyledSocialLinks>
+      <ul>
         {socialMedia &&
-            socialMedia.map(({ name, url }, i) => (
-              <li key={i}>
-                <StyledSocialLink
-                  href={url}
-                  target="_blank"
-                  rel="nofollow noopener noreferrer"
-                  aria-label={name}>
-                  <FormattedIcon name={name} />
-                </StyledSocialLink>
-              </li>
-            ))}
-      </StyledSocialList>
-    </StyledSocial>
-    <StyledMetadata tabindex="-1">
-      <StyledGitHubLink
-        href="https://brittanychiang.com/"
-        target="_blank"
-        rel="nofollow noopener noreferrer">
-          Original design by Brittany Chiang
-      </StyledGitHubLink>
-    </StyledMetadata>
-  </StyledContainer>
-);
+          socialMedia.map(({ name, url }, i) => (
+            <li key={i}>
+              <a href={url} aria-label={name}>
+                <Icon name={name} />
+              </a>
+            </li>
+          ))}
+      </ul>
+    </StyledSocialLinks>
 
-Footer.propTypes = {
-  githubInfo: PropTypes.object,
-};
+    <StyledCredit tabindex="-1">
+      <a href="https://brittanychiang.com/">Original design by Brittany Chiang</a>
+    </StyledCredit>
+  </StyledFooter>
+);
 
 export default Footer;

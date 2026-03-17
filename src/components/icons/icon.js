@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {
   IconAppStore,
+  IconBookmark,
   IconCodepen,
   IconExternal,
   IconFacebook,
@@ -11,18 +12,18 @@ import {
   IconInstagram,
   IconLinkedin,
   IconLoader,
-  IconLocation,
   IconLogo,
   IconPlayStore,
   IconStar,
   IconTwitter,
-  IconZap,
 } from '@components/icons';
 
-const FormattedIcon = ({ name }) => {
+const Icon = ({ name }) => {
   switch (name) {
     case 'AppStore':
       return <IconAppStore />;
+    case 'Bookmark':
+      return <IconBookmark />;
     case 'Codepen':
       return <IconCodepen />;
     case 'External':
@@ -41,8 +42,6 @@ const FormattedIcon = ({ name }) => {
       return <IconLinkedin />;
     case 'Loader':
       return <IconLoader />;
-    case 'Location':
-      return <IconLocation />;
     case 'Logo':
       return <IconLogo />;
     case 'PlayStore':
@@ -51,15 +50,13 @@ const FormattedIcon = ({ name }) => {
       return <IconStar />;
     case 'Twitter':
       return <IconTwitter />;
-    case 'Zap':
-      return <IconZap />;
     default:
       return <IconExternal />;
   }
 };
 
-FormattedIcon.propTypes = {
+Icon.propTypes = {
   name: PropTypes.string.isRequired,
 };
 
-export default FormattedIcon;
+export default Icon;
