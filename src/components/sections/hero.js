@@ -66,10 +66,14 @@ const Hero = () => {
     <>
       <p>
         I'm a Software Engineer working{' '}
+        <a href="https://www.traba.work" target="_blank" rel="noreferrer">
+          @Traba
+        </a>
+        . Previously, I worked{' '}
         <a href="https://www.twosigma.com" target="_blank" rel="noreferrer">
           @Two Sigma
         </a>
-        . Previously, I studied Computer Science{' '}
+        , studied Computer Science{' '}
         <a href="https://www.cam.ac.uk/" target="_blank" rel="noreferrer">
           @University of Cambridge
         </a>{' '}

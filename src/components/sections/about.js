@@ -125,7 +125,7 @@ const About = () => {
     sr.reveal(revealContainer.current, srConfig());
   }, []);
 
-  const skills = ['Python', 'Java', 'C, C++', 'SML', 'SQL', 'R'];
+  const skills = ['TypeScript', 'Python', 'NestJS', 'PostgreSQL', 'Redis', 'Kafka'];
 
   return (
     <StyledAboutSection id="about" ref={revealContainer}>
@@ -136,8 +136,7 @@ const About = () => {
           <div>
             <p>
               Hello! I'm Shiv Godhia, a Software Engineer{' '}
-              <a href="https://www.twosigma.com">@Two Sigma</a> where I work on engineering
-              challenges in Machine Learning.
+              <a href="https://www.traba.work">@Traba</a> on the AI Agents team.
             </p>
 
             <p>
