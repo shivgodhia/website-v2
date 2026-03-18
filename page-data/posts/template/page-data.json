@@ -2,4 +2,4 @@
     "componentChunkName": "component---src-templates-post-js",
     "path": "/posts/template",
     "result": {"data":{"markdownRemark":{"html":"<h2>Template</h2>\n<p>Some stuff</p>","frontmatter":{"title":"Template","description":"Template for blog posts","date":"2019-12-13","slug":"/posts/template","tags":["template"]}}},"pageContext":{}},
-    "staticQueryHashes": ["2009693873","3539500889","3825832676","4162897811"]}
+    "staticQueryHashes": ["2009693873","3539500889","4162897811"]}

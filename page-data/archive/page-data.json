@@ -1,5 +1,0 @@
-{
-    "componentChunkName": "component---src-pages-archive-js",
-    "path": "/archive/",
-    "result": {"data":{"allMarkdownRemark":{"edges":[{"node":{"frontmatter":{"date":"2017-12-01","title":"Template project","tech":["showsAtBottom","techYouUsed"],"github":"","external":"https://example.com","company":"Company"},"html":"<p>Template for \"Other Noteworthy Projects\", written in MarkDown. Leave the links blank if you don't want them to show up</p>"}}]}},"pageContext":{}},
-    "staticQueryHashes": ["2009693873","3539500889","3825832676","4162897811"]}
