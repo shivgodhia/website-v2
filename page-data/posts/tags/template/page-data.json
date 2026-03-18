@@ -1,1 +1,5 @@
-{"componentChunkName":"component---src-templates-tag-js","path":"/posts/tags/template/","result":{"data":{"allMarkdownRemark":{"totalCount":1,"edges":[{"node":{"frontmatter":{"title":"Template","description":"Template for blog posts","date":"2019-12-13","slug":"/posts/template","tags":["template"]}}}]}},"pageContext":{"tag":"template"}},"staticQueryHashes":["3115057458"]}
+{
+    "componentChunkName": "component---src-templates-tag-js",
+    "path": "/posts/tags/template/",
+    "result": {"data":{"allMarkdownRemark":{"totalCount":1,"edges":[{"node":{"frontmatter":{"title":"Template","description":"Template for blog posts","date":"2019-12-13","slug":"/posts/template","tags":["template"]}}}]}},"pageContext":{"tag":"template"}},
+    "staticQueryHashes": ["2009693873","3539500889","3825832676","4162897811"]}

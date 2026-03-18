@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
-Sitemap: https://www.shivgodhia.com/sitemap.xml
+Sitemap: https://www.shivgodhia.com/sitemap-index.xml
 Host: https://www.shivgodhia.com
