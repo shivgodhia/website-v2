@@ -1,37 +1,46 @@
 <div align="center">
-  <img alt="Logo" src="https://raw.githubusercontent.com/bchiang7/v4/main/src/images/logo.png" width="100" />
+  <img alt="Logo" src="./src/images/logo.png" width="100" />
 </div>
 <h1 align="center">
-  brittanychiang.com - v4
+  shivgodhia.com
 </h1>
 <p align="center">
-  The fourth iteration of <a href="https://brittanychiang.com" target="_blank">brittanychiang.com</a> built with <a href="https://www.gatsbyjs.org/" target="_blank">Gatsby</a> and hosted with <a href="https://www.netlify.com/" target="_blank">Netlify</a>
-</p>
-<p align="center">
-  Previous iterations:
-  <a href="https://github.com/bchiang7/v1" target="_blank">v1</a>,
-  <a href="https://github.com/bchiang7/v2" target="_blank">v2</a>,
-  <a href="https://github.com/bchiang7/bchiang7.github.io" target="_blank">v3</a>
-</p>
-<p align="center">
-  <a href="https://app.netlify.com/sites/brittanychiang/deploys" target="_blank">
-    <img src="https://api.netlify.com/api/v1/badges/1963b488-7b78-48c9-9e2d-6fb5e47ab3af/deploy-status" alt="Netlify Status" />
-  </a>
+  My personal website, <a href="https://shivgodhia.com" target="_blank">shivgodhia.com</a>
+  <br>
+  Built with <a href="https://www.gatsbyjs.org/" target="_blank">Gatsby</a> and hosted with <a href="https://pages.github.com/" target="_blank">GitHub Pages</a>, credits go to <a href="https://brittanychiang.com" target="_blank">brittanychiang.com</a> for the awesome website
 </p>
 
-![demo](https://raw.githubusercontent.com/bchiang7/v4/main/src/images/demo.png)
+![demo](./src/images/demo.png)
 
 ## 🚨 Forking this repo (please read!)
 
-Many people have contacted me asking me if they can use this code for their own website, and the answer to that question is usually **yes, with attribution**.
+I did not design or build this website, I merely modified it to suit my tastes. Last I checked, [Brittany Chiang](https://github.com/bchiang7/) allows people to use this code **with attribution**, but it would be better to hear it from Brittany herself, at her website's [GitHub page](https://github.com/bchiang7/v4).
 
-I value keeping my site open source, but as you all know, _**plagiarism is bad**_. It's always disheartening whenever I find that someone has copied my site without giving me credit. I spent a non-trivial amount of effort building and designing this iteration of my website, and I am proud of it! All I ask of you all is to not claim this effort as your own.
+## 🏗️ My experience modifying this website
 
-Please also note that I did not build this site with the intention of it being a starter theme, so if you have questions about implementation, please refer to the [Gatsby docs](https://www.gatsbyjs.org/docs/).
+Firstly, note that I have little to no real web development experience. I did work in JavaScript before and know the basics of HTML and CSS, but have very little practical experience with handling boilerplate and using frameworks etc. Anyway, JavaScript turned out to be totally unnecessary for forking and modifying this website.
 
-### TL;DR
+I started off by going through the whole [Gatsby tutorial](https://www.gatsbyjs.org/tutorial/) on a Sunday afternoon. It's a fantastic tutorial that teaches the basics of modern WebDev and I highly recommend going through it. Here's the [completed tutorial's code](https://github.com/hivestrung/gatsby-tutorial). It was enough to get me started with understanding the fundamentals of [React](https://reactjs.org/), enabling me to modify the website.
 
-Yes, you can fork this repo. Please give me proper credit by linking back to [brittanychiang.com](https://brittanychiang.com). Thanks!
+Of course, changing the content to my own is no big deal, Gatsby's Content Management System using GraphQL means pages are automatically created from your Markdown files within folders. If you've used [Jekyll](https://jekyllrb.com/) it has a similar idea of creating pages from your Markdown files. So a lot of the work was already done by Brittany.
+
+Changing basic like colours was simple enough, though I refactored the code a little so that colours are all defined in one place (previously they were defined in 2 different files).
+
+I did have to spend quite a bit of time changing the loading animation to use `S` instead of `B` - I was introduced to the concept of [Scalable Vector Graphics (SVG)](https://developer.mozilla.org/en-US/docs/Web/SVG), in particular, SVG paths. In short, SVG paths are basically a way to draw graphics on the fly. So, instead of loading an image like a JPEG, it's actually taking a sequence of instructions and drawing the graphics out, which was really cool but also really difficult to do myself. I used [this neat website](https://danmarshall.github.io/google-font-to-svg-path/) to convert `S` to an SVG path.
+
+Deploying was different from what I was used to. For my previous site, I simply had to push to master and it would update. Gatsby works a little differently, but using [this helpful guide](https://www.gatsbyjs.com/docs/how-gatsby-works-with-github-pages/) had me sorted in 15 minutes.
+
+Now, development has to be done in a branch not named master, and once I'm happy with my site, I have to run `npm run deploy` to deploy it. It means that pushing changes and deployment are separate; deployment can be done without even pushing my changes, and I can push without deploying. I figured that if I'm deploying, I will always want to push my changes, so instead of the script `gatsby build && gh-pages -d public -b master` being called when running `npm run deploy`, I set it to run `git push && gatsby build && gh-pages -d public -b master`.
+
+## 🗺️ Roadmap
+
+A lot has been done, and I'm rather happy with the page as it is for now. But in due time, I hope to build some of the following features:
+
+- A blogging section
+- Featured blog posts on the front page
+- Typing animation for the introduction at the top of the page
+- Dark/light mode toggle
+- A button to cycle between colour schemes, just for fun
 
 ## 🛠 Installation & Set Up
 
@@ -77,11 +86,11 @@ Yes, you can fork this repo. Please give me proper credit by linking back to [br
 
 | Color          | Hex                                                                |
 | -------------- | ------------------------------------------------------------------ |
-| Navy           | ![#0a192f](https://via.placeholder.com/10/0a192f?text=+) `#0a192f` |
-| Light Navy     | ![#112240](https://via.placeholder.com/10/0a192f?text=+) `#112240` |
-| Lightest Navy  | ![#233554](https://via.placeholder.com/10/303C55?text=+) `#233554` |
+| Navy           | ![#020c1b](https://via.placeholder.com/10/020c1b?text=+) `#020c1b` |
+| Light Navy     | ![#041630](https://via.placeholder.com/10/041630?text=+) `#041630` |
+| Lightest Navy  | ![#303C55](https://via.placeholder.com/10/303C55?text=+) `#303c55` |
 | Slate          | ![#8892b0](https://via.placeholder.com/10/8892b0?text=+) `#8892b0` |
 | Light Slate    | ![#a8b2d1](https://via.placeholder.com/10/a8b2d1?text=+) `#a8b2d1` |
 | Lightest Slate | ![#ccd6f6](https://via.placeholder.com/10/ccd6f6?text=+) `#ccd6f6` |
 | White          | ![#e6f1ff](https://via.placeholder.com/10/e6f1ff?text=+) `#e6f1ff` |
-| Green          | ![#64ffda](https://via.placeholder.com/10/64ffda?text=+) `#64ffda` |
+| Yellow         | ![#FCDF49](https://via.placeholder.com/10/FCDF49?text=+) `#fcdf49` |
