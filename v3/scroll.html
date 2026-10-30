@@ -1,0 +1,430 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Shiv Godhia</title>
+  <meta name="description" content="Shiv Godhia builds AI agents at Traba in New York, and his own apps on the side.">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="scroll.css">
+  <script>
+    if (!matchMedia('(prefers-reduced-motion: reduce)').matches) document.documentElement.classList.add('scrub');
+  </script>
+</head>
+<body>
+  <main>
+    <!-- Hero: name shrinks, intro lights up word by word -->
+    <section class="hero" data-scrolly>
+      <div class="stage">
+        <h1 class="hero-name">Shiv<br>Godhia</h1>
+        <div class="hero-copy">
+          <img class="me" src="img/me.jpg" width="400" height="400" alt="Shiv, smiling, at an outdoor beer garden">
+          <p class="lede" data-words>I build AI agents at <a href="https://www.traba.work">Traba</a> in New York. In the evenings I ship my own apps: a transcription service with an Apple Watch app, an iPhone fighting game, a writing tool for the Mac, and a haze checker for Singapore.</p>
+        </div>
+        <ul class="contact hero-contact">
+          <li><a href="mailto:shivgodhia@gmail.com">shivgodhia@gmail.com</a></li>
+          <li><a href="https://github.com/shivgodhia">GitHub</a></li>
+          <li><a href="https://www.linkedin.com/in/shivgodhia/">LinkedIn</a></li>
+        </ul>
+        <p class="hint" aria-hidden="true">Scroll</p>
+      </div>
+    </section>
+
+    <!-- Journey: one place per step -->
+    <section class="journey" data-scrolly aria-label="Where I've worked">
+      <div class="stage">
+        <div class="step">
+          <p class="years">2016–2018</p>
+          <p class="place">Singapore</p>
+          <p class="what">National service, where I automated workout tracking for 50+ people. Then <a href="https://www.a-star.edu.sg/i2r">A*STAR</a>, building a tool for labelling self-driving car LiDAR data in 3D.</p>
+        </div>
+        <div class="step">
+          <p class="years">2018–2021</p>
+          <p class="place">Cambridge</p>
+          <p class="what">Computer Science at the University of Cambridge. Summers at Amazon on Alexa (with a return offer), Scope News, and DataProphet in Cape Town.</p>
+        </div>
+        <div class="step">
+          <p class="years">2021–2025</p>
+          <p class="place">London</p>
+          <p class="what">Machine learning engineer at <a href="https://www.twosigma.com">Two Sigma</a>. I built the distributed compute framework that made research workflows 3× faster at half the cost, and got 80% of the main forecasting library's models into production.</p>
+        </div>
+        <div class="step">
+          <p class="years">2025–now</p>
+          <p class="place">New York</p>
+          <p class="what">On Traba's Agents team, building <a href="https://traba.work/company/engineering/building-scout">Scout</a>, an AI agent that vets workers. Everything below I built on the side.</p>
+        </div>
+        <div class="bar" aria-hidden="true"></div>
+      </div>
+    </section>
+
+    <header class="made-title wrap">
+      <h2>Things I've made</h2>
+    </header>
+
+    <!-- SkribOS -->
+    <section class="proj" data-scrolly id="skribos" style="--bg-p:#ebe6d9; --ink-p:#18241f; --muted-p:#5b675f; --accent:#1f6b4f; --card-p:#fffdf8">
+      <div class="stage">
+        <div class="proj-head">
+          <h2>SkribOS <small>Transcripts and summaries for every voice note</small></h2>
+          <nav class="rail" aria-label="SkribOS">
+            <a href="#skribos" data-rail="p">The problem</a>
+            <a href="#skribos" data-rail="d">What it does</a>
+            <a href="#skribos" data-rail="s">So far</a>
+          </nav>
+        </div>
+        <div class="steps">
+          <div class="step" data-group="p" data-vis="a">
+            <p class="say">Hours of voice notes, and no way to search them.</p>
+            <p class="note">Coaching, catch-ups, meetings: a lot of good advice arrives as long voice notes. You can't skim them, search them or act on them.</p>
+          </div>
+          <div class="step" data-group="d" data-vis="b">
+            <h3>Send it a voice note, get the gist back</h3>
+            <p>The Telegram bot transcribes audio, video and documents with speakers and timestamps, then writes a summary: the short version, key points and action items. Add it to a group and it transcribes everything.</p>
+          </div>
+          <div class="step" data-group="d" data-vis="c">
+            <h3>Record from your wrist</h3>
+            <p>A standalone Apple Watch app with a watch-face complication, plus an iPhone app with a share extension and a Control Center button. There's also a web app that works offline.</p>
+          </div>
+          <div class="step" data-group="d" data-vis="d">
+            <h3>Ask Claude about everything you've recorded</h3>
+            <p>An MCP server with 19 tools connects your archive to Claude and ChatGPT, so you can ask questions across months of recordings.</p>
+          </div>
+          <div class="step" data-group="s" data-vis="e">
+            <ul class="stats">
+              <li><b data-count="1386">1,386</b><span>commits since February</span></li>
+              <li><b data-count="468">468</b><span>pull requests merged</span></li>
+              <li><b data-count="5">5</b><span>apps: Telegram, web, iPhone, Watch, MCP</span></li>
+              <li><b>$10</b><span>a month for Pro, or pay in Telegram Stars</span></li>
+            </ul>
+            <p>Live in beta at <a href="https://skribos.com">skribos.com</a> and <a href="https://t.me/SkribOSBot">@SkribOSBot</a>. The iPhone and Watch apps are in TestFlight.</p>
+          </div>
+        </div>
+        <div class="visuals" aria-hidden="true">
+          <div class="vis" data-vis-id="a">
+            <div class="chat">
+              <div class="bubble"><small>Coach</small>▶︎ Voice message · 4:12</div>
+              <div class="bubble"><small>Coach</small>▶︎ Voice message · 6:47</div>
+              <div class="bubble"><small>Coach</small>▶︎ Voice message · 3:05</div>
+              <div class="bubble mine">Will listen later 🙏</div>
+            </div>
+          </div>
+          <div class="vis" data-vis-id="b">
+            <div class="chat">
+              <div class="bubble mine">▶︎ Voice message · 6:47</div>
+              <div class="bubble"><small>SkribOS</small><strong>TL;DR</strong> Keep the Friday review. Move the launch to the 16th.
+                <ul><li>Ship onboarding first</li><li>Cut the referral email</li></ul>
+                <strong>Action items</strong><ul><li>Send the revised plan by Thursday</li></ul>
+              </div>
+            </div>
+          </div>
+          <div class="vis" data-vis-id="c">
+            <div class="watch"><div class="watch-face"><img src="img/skribos-watch-icon.png" width="360" height="360" alt=""><span class="rec">● 0:42</span><span class="cap">Recording</span></div></div>
+          </div>
+          <div class="vis" data-vis-id="d">
+            <div class="chat">
+              <div class="bubble mine">What did my coach say about pricing over the last month?</div>
+              <div class="bubble"><small>Claude, using SkribOS</small>Across 6 recordings: start with one paid plan, don't discount in the first month, and test annual pricing after 100 users.</div>
+            </div>
+          </div>
+          <div class="vis" data-vis-id="e"><img class="app-icon" src="img/skribos-icon.png" width="360" height="360" alt=""></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Ghost Fighter -->
+    <section class="proj" data-scrolly id="ghost" style="--bg-p:#100d16; --ink-p:#f1eefb; --muted-p:#a39cb8; --accent:#5fe3ff; --card-p:#221d2e; --on-accent:#06212a">
+      <div class="stage">
+        <div class="proj-head">
+          <h2>Ghost Fighter <small>An iPhone fighting game where you fight copies of your friends</small></h2>
+          <nav class="rail" aria-label="Ghost Fighter">
+            <a href="#ghost" data-rail="p">The idea</a>
+            <a href="#ghost" data-rail="d">How it plays</a>
+            <a href="#ghost" data-rail="s">So far</a>
+          </nav>
+        </div>
+        <div class="steps">
+          <div class="step" data-group="p" data-vis="a">
+            <p class="say">Train a ghost of yourself. Dare your friends to beat it.</p>
+            <p class="note">Your friends don't need to be online. Their ghost fights the way they do.</p>
+          </div>
+          <div class="step" data-group="d" data-vis="b">
+            <h3>Your ghost learns from every match you win</h3>
+            <p>Each win teaches your ghost a little more of how you fight, shown as its generation. Moves and combos are swipes, with haptics and an announcer.</p>
+          </div>
+          <div class="step" data-group="d" data-vis="c">
+            <h3>Send a link that says "beat my ghost"</h3>
+            <p>Friends play a best of three against your ghost, and you see how many tried and how many won. Every match can be replayed exactly.</p>
+          </div>
+          <div class="step" data-group="s" data-vis="d">
+            <ul class="stats">
+              <li><b data-count="1057">1,057</b><span>tests on the fight simulation</span></li>
+              <li><b data-count="60">60</b><span>fps, locked on a real iPhone</span></li>
+              <li><b data-count="3">3</b><span>days to port it from a Godot prototype to Unity, bit for bit</span></li>
+              <li><b>AI-made</b><span>fighter, from concept art to a rigged 3D model</span></li>
+            </ul>
+            <p>In TestFlight on iPhone now.</p>
+          </div>
+        </div>
+        <div class="visuals" aria-hidden="true">
+          <div class="vis" data-vis-id="a"><img class="poster" src="img/dojo.jpg" width="1800" height="764" alt=""></div>
+          <div class="vis" data-vis-id="b">
+            <figure class="kenji"><img src="img/kenji.jpg" width="603" height="900" alt=""><figcaption>GEN 14</figcaption></figure>
+          </div>
+          <div class="vis" data-vis-id="c">
+            <div class="dare">
+              <img src="img/gf-icon.png" width="360" height="360" alt="">
+              <p class="dare-title">Beat my ghost</p>
+              <p class="dare-meta">12 tried · 2 beat it</p>
+            </div>
+          </div>
+          <div class="vis" data-vis-id="d"><img class="app-icon" src="img/gf-icon.png" width="360" height="360" alt=""></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Margin -->
+    <section class="proj" data-scrolly id="margin" style="--bg-p:#1c1a2b; --ink-p:#eeebff; --muted-p:#a7a2c6; --accent:#b8a6ff; --card-p:#2a2740; --on-accent:#17132e">
+      <div class="stage">
+        <div class="proj-head">
+          <h2>Margin <small>A writing app for the Mac with an AI editor</small></h2>
+          <nav class="rail" aria-label="Margin">
+            <a href="#margin" data-rail="p">The problem</a>
+            <a href="#margin" data-rail="d">What it does</a>
+            <a href="#margin" data-rail="s">So far</a>
+          </nav>
+        </div>
+        <div class="steps">
+          <div class="step" data-group="p" data-vis="a">
+            <p class="say">AI writing tools rewrite you. Margin reads your edits instead.</p>
+            <p class="note">Think Cursor, but for prose: fiction, essays and blog posts.</p>
+          </div>
+          <div class="step" data-group="d" data-vis="b">
+            <h3>It suggests. You decide.</h3>
+            <p>The AI editor, Muse, never changes your text. It proposes edits you accept or reject, and replies in comment threads pinned to your words.</p>
+          </div>
+          <div class="step" data-group="d" data-vis="c">
+            <h3>It only reads what changed</h3>
+            <p>Muse reads the document once, then only sees the diff of each edit, so it costs less the less you change. Every document has its own history, with your edits and the AI's kept apart.</p>
+          </div>
+          <div class="step" data-group="s" data-vis="d">
+            <ul class="stats">
+              <li><b data-count="214">214</b><span>commits in under two weeks</span></li>
+              <li><b>v0.2.8</b><span>signed Mac app that updates itself</span></li>
+              <li><b data-count="6">6</b><span>model families to choose from</span></li>
+              <li><b>Free</b><span>while it's in beta</span></li>
+            </ul>
+            <p><a href="https://margin.shivgodhia.com">margin.shivgodhia.com</a> · <a href="https://github.com/Skyr-High-Labs/margin-releases/releases/latest/download/Margin-arm64.dmg">Download for Mac</a></p>
+          </div>
+        </div>
+        <div class="visuals" aria-hidden="true">
+          <div class="vis" data-vis-id="a"><img class="mark" src="img/margin-white.svg" width="314" height="267" alt=""></div>
+          <div class="vis" data-vis-id="b">
+            <div class="doc">
+              <p>The rain had stopped by the time she reached the station, <del>but the platform was still wet and shiny</del> <ins>the platform still glossed with it</ins>.</p>
+              <div class="doc-actions"><span class="ok">Accept</span><span>Reject</span></div>
+              <div class="bubble"><small>Muse</small>Tighter, and it keeps the rain in the sentence.</div>
+            </div>
+          </div>
+          <div class="vis" data-vis-id="c">
+            <div class="term margin-term"><span class="dim">edit 41 · writer</span>
+<span class="hi">- but the platform was still wet</span>
+<span class="hi">+ the platform still glossed with it</span>
+
+<span class="dim">muse reads 2 lines, not 4,812 words</span></div>
+          </div>
+          <div class="vis" data-vis-id="d"><img class="mark" src="img/margin-white.svg" width="314" height="267" alt=""></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Haze How Ah? -->
+    <section class="proj" data-scrolly id="haze" style="--bg-p:#2f6fa6; --ink-p:#f4f9fd; --muted-p:#c3daee; --accent:#ffffff; --card-p:#ffffff; --card-ink:#0d2a44; --on-accent:#0d2a44">
+      <div class="stage">
+        <div class="proj-head">
+          <h2>Haze How Ah? <small>Singapore's air quality, answered in Singlish</small></h2>
+          <nav class="rail" aria-label="Haze How Ah?">
+            <a href="#haze" data-rail="p">The problem</a>
+            <a href="#haze" data-rail="d">What it does</a>
+            <a href="#haze" data-rail="s">So far</a>
+          </nav>
+        </div>
+        <div class="steps">
+          <div class="step" data-group="p" data-vis="a">
+            <p class="say">Haze season. Can go outside anot?</p>
+            <p class="note">The official readings are tables of numbers. Most people just want to know whether to go for that run.</p>
+          </div>
+          <div class="step" data-group="d" data-vis="b">
+            <h3>One answer, from "No problem." to "Siao liao."</h3>
+            <p>It reads NEA's live PM2.5 levels and gives the official advice in one line. The whole page is a sky that greys as the haze gets worse, with a map of all five regions.</p>
+          </div>
+          <div class="step" data-group="d" data-vis="c">
+            <h3>A ping when your side of the island gets hazy</h3>
+            <p>The Telegram bot alerts you when your region crosses a haze level, and waits for two clean readings before saying it's clear, so it doesn't flip-flop. Works in group chats too.</p>
+          </div>
+          <div class="step" data-group="s" data-vis="d">
+            <ul class="stats">
+              <li><b data-count="1">1</b><span>day from first commit to live</span></li>
+              <li><b data-count="49">49</b><span>pull requests that week</span></li>
+              <li><b data-count="10">10</b><span>minutes between checks</span></li>
+              <li><b data-count="2">2</b><span>languages, English and Chinese</span></li>
+            </ul>
+            <p>Free at <a href="https://hazehowah.com">hazehowah.com</a> and <a href="https://t.me/HazeHowAhSGBot">@HazeHowAhSGBot</a>.</p>
+          </div>
+        </div>
+        <div class="visuals" aria-hidden="true">
+          <div class="vis" data-vis-id="a"><img class="mascot" src="img/haze-mascot.png" width="480" height="480" alt=""></div>
+          <div class="vis" data-vis-id="b"><img class="device" src="img/haze-phone.jpg" width="780" height="1688" alt=""></div>
+          <div class="vis" data-vis-id="c">
+            <div class="chat">
+              <div class="bubble"><small>Haze How Ah?</small>East side PM2.5 just crossed 55. Cut down on siong exercise.</div>
+              <div class="bubble"><small>Haze How Ah?</small>East side back under 55 for two readings. Heng ah.</div>
+              <div class="bubble mine">/now</div>
+            </div>
+          </div>
+          <div class="vis" data-vis-id="d"><img class="mascot" src="img/haze-mascot.png" width="480" height="480" alt=""></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Grove -->
+    <section class="proj" data-scrolly id="grove" style="--bg-p:#17251a; --ink-p:#e4efcf; --muted-p:#a5b98a; --accent:#d4ec8f; --card-p:#24362a; --on-accent:#17251a">
+      <div class="stage">
+        <div class="proj-head">
+          <h2>Grove <small>One command to give every AI agent its own workspace</small></h2>
+          <nav class="rail" aria-label="Grove">
+            <a href="#grove" data-rail="p">The problem</a>
+            <a href="#grove" data-rail="d">What it does</a>
+            <a href="#grove" data-rail="s">So far</a>
+          </nav>
+        </div>
+        <div class="steps">
+          <div class="step" data-group="p" data-vis="a">
+            <p class="say">Running agents in parallel means a dozen worktrees by hand.</p>
+            <p class="note">A feature that touches three repos needs three matching branches, three checkouts and a terminal for each, every time.</p>
+          </div>
+          <div class="step" data-group="d" data-vis="b">
+            <h3>One command sets up every repo</h3>
+            <p>Grove creates a worktree in each repo on the same branch, opens one tmux session and starts your agent. If any step fails, it rolls everything back.</p>
+          </div>
+          <div class="step" data-group="d" data-vis="c">
+            <h3>A dashboard of everything in flight</h3>
+            <p>An fzf dashboard lists every workspace with its pull request status, and each workspace inherits the Claude skills of the repos inside it.</p>
+          </div>
+          <div class="step" data-group="s" data-vis="d">
+            <ul class="stats">
+              <li><b data-count="2800">2,800</b><span>lines of Zsh</span></li>
+              <li><b data-count="30">30</b><span>test files</span></li>
+              <li><b>Daily</b><span>it's how I built everything on this page</span></li>
+              <li><b>Open</b><span>source on GitHub</span></li>
+            </ul>
+            <p><a href="https://grove.shivgodhia.com">grove.shivgodhia.com</a> · <a href="https://github.com/shivgodhia/grove">GitHub</a></p>
+          </div>
+        </div>
+        <div class="visuals" aria-hidden="true">
+          <div class="vis" data-vis-id="a">
+            <div class="term"><span class="dim">~/code/web</span>      git worktree add ../web-dark-mode
+<span class="dim">~/code/api</span>      git worktree add ../api-dark-mode
+<span class="dim">~/code/infra</span>    git worktree add ../infra-dark-mode
+<span class="dim">…and again for the next agent</span></div>
+          </div>
+          <div class="vis" data-vis-id="b">
+            <div class="term"><span class="dim">~</span> <span class="hi">gv fullstack dark-mode</span>
+  planting fullstack/dark-mode
+  ├ web     shiv/dark-mode  ✓ worktree
+  ├ api     shiv/dark-mode  ✓ worktree
+  └ infra   shiv/dark-mode  ✓ worktree
+  tmux up · claude running</div>
+          </div>
+          <div class="vis" data-vis-id="c">
+            <div class="term"><span class="hi">grove</span>                      <span class="dim">PR</span>
+▸ fullstack/dark-mode      #212 ✓ checks
+  fullstack/emoji-reacts   #214 ● review
+  api/rate-limits          #88  ✓ merged
+  web/onboarding           —</div>
+          </div>
+          <div class="vis" data-vis-id="d"><img class="device wide" src="img/grove-desk.jpg" width="1920" height="1200" alt=""></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="work wrap" aria-labelledby="work">
+      <h2 id="work">Work history</h2>
+      <ol class="timeline">
+        <li>
+          <span class="when">2025–now</span>
+          <details>
+            <summary><strong>Software Engineer, Traba</strong> <span>New York</span></summary>
+            <p>On the Agents team, building and scaling Scout, Traba's AI agent that vets workers. <a href="https://traba.work/company/engineering/building-scout">How we built it</a>.</p>
+          </details>
+        </li>
+        <li>
+          <span class="when">2021–25</span>
+          <details>
+            <summary><strong>Machine Learning Engineer, Two Sigma</strong> <span>London</span></summary>
+            <ul>
+              <li>Designed a Ray-based distributed compute framework that keeps work near its data, making ML research workflows 3× faster at half the compute cost.</li>
+              <li>Built and maintained the core library for serialising and shipping models, which made regular automated refits and releases possible firm-wide.</li>
+              <li>Led the work to export 80% of the main time-series forecasting library's models to production.</li>
+              <li>Built a one-click system to simulate, backtest and analyse regularly retrained models.</li>
+              <li>Cut test times for an internal distributed compute framework by 85%.</li>
+            </ul>
+          </details>
+        </li>
+        <li>
+          <span class="when">2020</span>
+          <details>
+            <summary><strong>SDE Intern, Amazon Alexa</strong> <span>Cambridge, UK</span></summary>
+            <p>Added a static type system to the internal language Alexa uses to generate its answers, in ANTLR and Java. Got a return offer.</p>
+          </details>
+        </li>
+        <li>
+          <span class="when">2019</span>
+          <details>
+            <summary><strong>Software Engineer, Scope News</strong> <span>Cambridge, UK</span></summary>
+            <p>Led a summariser for news articles with controllable length, adapting Microsoft's MASS transformer in PyTorch.</p>
+          </details>
+        </li>
+        <li>
+          <span class="when">2019</span>
+          <details>
+            <summary><strong>Data Science Intern, DataProphet</strong> <span>Cape Town</span></summary>
+            <p>Used variational autoencoders in Keras to optimise Mercedes-Benz's C-Class production line.</p>
+          </details>
+        </li>
+        <li>
+          <span class="when">2018</span>
+          <details>
+            <summary><strong>Software Engineer Intern, A*STAR I2R</strong> <span>Singapore</span></summary>
+            <p>Led a web tool for labelling LiDAR data with 3D bounding boxes, and automated processing of hundreds of terabytes of sensor data a day.</p>
+          </details>
+        </li>
+        <li>
+          <span class="when">2016–17</span>
+          <details>
+            <summary><strong>National Service, Singapore Armed Forces</strong></summary>
+            <p>Built an automated pipeline in Google Apps Script that tracked workouts for 50+ people for six months.</p>
+          </details>
+        </li>
+      </ol>
+    </section>
+
+    <section class="earlier wrap" aria-labelledby="earlier">
+      <h2 id="earlier">Earlier hackathon projects</h2>
+      <ul>
+        <li><a href="https://github.com/microwave-industries/tabwise-backend"><strong>TabWise</strong></a> splits a restaurant bill from a photo of the receipt, with no maths and no accounts. Won the Capital One challenge at Hack King's 6.0.</li>
+        <li><a href="https://xathon.mettl.com/event/internshackathon2020"><strong>Onboard Buddy</strong></a> is an Alexa skill that quizzes new Amazon interns with spaced-repetition flashcards. Built at Amazon's 2020 intern hackathon.</li>
+      </ul>
+    </section>
+  </main>
+
+  <footer class="wrap">
+    <p>Say hi at <a href="mailto:shivgodhia@gmail.com">shivgodhia@gmail.com</a>.</p>
+  </footer>
+
+  <script src="scroll.js"></script>
+</body>
+</html>
