@@ -19,7 +19,7 @@
 </head>
 <body>
   <main>
-    <section class="hero" data-scrolly>
+    <section class="hero" data-scrolly data-nav="Top">
       <div class="stage">
         <h1 class="hero-name">Shiv<br>Godhia</h1>
         <div class="hero-copy">
@@ -45,16 +45,19 @@
       <div class="stage">
         <h2 id="work" class="career-title">Work</h2>
 
-        <div class="step">
+        <div class="step" data-nav="Traba" data-nav-sub="2025–now">
           <img class="logo" src="img/logos/traba.png" alt="Traba" width="600" height="166">
           <p class="role">Software Engineer, Agents team <span>New York, 2025–now</span></p>
           <ul class="wins">
             <li><b>Scout</b><span>Traba's AI agent that vets workers. I build and scale it.</span></li>
+            <li><b>LLMs</b><span>a multi-stage system that reads call transcripts to judge worker qualifications</span></li>
+            <li><b>Evals</b><span>an internal platform for measuring AI assessment quality, used across the team</span></li>
+            <li><b>Kafka</b><span>a pipeline that turns every call and message into evidence-backed facts about each worker</span></li>
           </ul>
           <p class="more"><a href="https://traba.work/company/engineering/building-scout">How we built Scout</a></p>
         </div>
 
-        <div class="step">
+        <div class="step" data-nav="Two Sigma" data-nav-sub="2021–25">
           <img class="logo" src="img/logos/twosigma.svg" alt="Two Sigma" width="198" height="38">
           <p class="role">Machine Learning Engineer <span>London, 2021–2025</span></p>
           <ul class="wins">
@@ -65,28 +68,30 @@
           </ul>
         </div>
 
-        <div class="step">
+        <div class="step" data-nav="Amazon" data-nav-sub="2020">
           <img class="logo" src="img/logos/amazon.svg" alt="Amazon" width="603" height="182">
-          <p class="role">Software Development Engineer Intern, Alexa <span>Cambridge, UK, 2020</span></p>
+          <p class="role">Software Engineer Intern, Alexa <span>Cambridge, UK, 2020</span></p>
           <ul class="wins">
             <li><b>Types</b><span>a static type system for the language Alexa uses to write its answers</span></li>
             <li><b>Offer</b><span>a return offer at the end of the 12 weeks</span></li>
           </ul>
         </div>
 
-        <div class="step">
+        <div class="step" data-nav="Cambridge" data-nav-sub="2018–21">
           <img class="logo" src="img/logos/cambridge.svg" alt="University of Cambridge" width="300" height="60">
-          <p class="role">Computer Science <span>Cambridge, 2018–2021</span></p>
+          <p class="role">MA and BA in Computer Science <span>Gonville &amp; Caius College, 2018–2021</span></p>
           <ul class="before">
+            <li><strong>Dissertation</strong><span>Detecting hate speech in internet memes, using language and images together.</span></li>
+            <li><strong>Scholarship</strong><span>Cambridge Commonwealth, European and International Trust.</span></li>
             <li><img src="img/logos/dataprophet.svg" alt="DataProphet" width="160" height="32"><span>Data science intern in Cape Town, 2019. Autoencoders for a Mercedes-Benz production line.</span></li>
-            <li><strong>Scope News</strong><span>Software engineer, 2019. Led a news summariser with adjustable length, built on a transformer.</span></li>
+            <li><strong>Scope News</strong><span>Research intern, 2019. A news summariser with adjustable length, adapting Microsoft's MASS.</span></li>
           </ul>
         </div>
 
-        <div class="step">
+        <div class="step" data-nav="Singapore" data-nav-sub="2016–18">
           <p class="role">Singapore <span>2016–2018</span></p>
           <ul class="before">
-            <li><strong>A*STAR I2R</strong><span>Software engineer intern. A 3D labelling tool for self-driving car LiDAR data.</span></li>
+            <li><strong>A*STAR I2R</strong><span>Research intern. A 3D labelling tool for LiDAR data, and pipelines for 100+ TB of it.</span></li>
             <li><strong>Singapore Armed Forces</strong><span>National service. Automated workout tracking for 50+ people.</span></li>
           </ul>
         </div>
@@ -100,7 +105,7 @@
       <p>Apps I've built and shipped on my own.</p>
     </header>
 
-    <section class="proj" data-scrolly id="skribos" style="--bg-p:#ebe6d9; --ink-p:#18241f; --muted-p:#5b675f; --accent:#1f6b4f; --card-p:#fffdf8">
+    <section class="proj" data-scrolly id="skribos" data-nav="SkribOS" data-nav-sub="Side project" style="--bg-p:#ebe6d9; --ink-p:#18241f; --muted-p:#5b675f; --accent:#1f6b4f; --card-p:#fffdf8">
       <div class="stage">
         <div class="proj-head">
           <h2>SkribOS <small>Transcripts and summaries for every voice note</small></h2>
@@ -166,7 +171,7 @@
       </div>
     </section>
 
-    <section class="proj" data-scrolly id="ghost" style="--bg-p:#100d16; --ink-p:#f1eefb; --muted-p:#a39cb8; --accent:#5fe3ff; --card-p:#221d2e; --on-accent:#06212a">
+    <section class="proj" data-scrolly id="ghost" data-nav="Ghost Fighter" data-nav-sub="Side project" style="--bg-p:#100d16; --ink-p:#f1eefb; --muted-p:#a39cb8; --accent:#5fe3ff; --card-p:#221d2e; --on-accent:#06212a">
       <div class="stage">
         <div class="proj-head">
           <h2>Ghost Fighter <small>An iPhone fighting game against copies of your friends</small></h2>
@@ -208,7 +213,7 @@
       </div>
     </section>
 
-    <section class="proj" data-scrolly id="margin" style="--bg-p:#1c1a2b; --ink-p:#eeebff; --muted-p:#a7a2c6; --accent:#b8a6ff; --card-p:#2a2740; --on-accent:#17132e">
+    <section class="proj" data-scrolly id="margin" data-nav="Margin" data-nav-sub="Side project" style="--bg-p:#1c1a2b; --ink-p:#eeebff; --muted-p:#a7a2c6; --accent:#b8a6ff; --card-p:#2a2740; --on-accent:#17132e">
       <div class="stage">
         <div class="proj-head">
           <h2>Margin <small>A Mac writing app with an AI editor</small></h2>
@@ -248,7 +253,7 @@
       </div>
     </section>
 
-    <section class="proj" data-scrolly id="haze" style="--bg-p:#2f6fa6; --ink-p:#f4f9fd; --muted-p:#c3daee; --accent:#ffffff; --card-p:#ffffff; --card-ink:#0d2a44; --on-accent:#0d2a44">
+    <section class="proj" data-scrolly id="haze" data-nav="Haze How Ah?" data-nav-sub="Side project" style="--bg-p:#2f6fa6; --ink-p:#f4f9fd; --muted-p:#c3daee; --accent:#ffffff; --card-p:#ffffff; --card-ink:#0d2a44; --on-accent:#0d2a44">
       <div class="stage">
         <div class="proj-head">
           <h2>Haze How Ah? <small>Singapore's air quality, answered in Singlish</small></h2>
@@ -282,7 +287,7 @@
       </div>
     </section>
 
-    <section class="proj" data-scrolly id="grove" style="--bg-p:#17251a; --ink-p:#e4efcf; --muted-p:#a5b98a; --accent:#d4ec8f; --card-p:#24362a; --on-accent:#17251a">
+    <section class="proj" data-scrolly id="grove" data-nav="Grove" data-nav-sub="Side project" style="--bg-p:#17251a; --ink-p:#e4efcf; --muted-p:#a5b98a; --accent:#d4ec8f; --card-p:#24362a; --on-accent:#17251a">
       <div class="stage">
         <div class="proj-head">
           <h2>Grove <small>One command gives every AI agent its own workspace</small></h2>
@@ -328,11 +333,12 @@
       </div>
     </section>
 
-    <section class="earlier wrap" aria-labelledby="earlier">
+    <section class="earlier wrap" aria-labelledby="earlier" data-nav="Hackathons">
       <h2 id="earlier">Earlier hackathon projects</h2>
       <ul>
-        <li><a href="https://github.com/microwave-industries/tabwise-backend"><strong>TabWise</strong></a> splits a restaurant bill from a photo of the receipt. Won the Capital One challenge at Hack King's 6.0.</li>
         <li><a href="https://xathon.mettl.com/event/internshackathon2020"><strong>Onboard Buddy</strong></a> is an Alexa skill that quizzes new Amazon interns with flashcards.</li>
+        <li><strong>Prep.me</strong> is a smart flashcard tool for Alexa. I led the team that won first place in Amazon's Alexa Challenge at Hack Cambridge 2020.</li>
+        <li><a href="https://github.com/microwave-industries/tabwise-backend"><strong>TabWise</strong></a> splits a restaurant bill from a photo of the receipt. Won the Capital One challenge at Hack King's 6.0.</li>
       </ul>
     </section>
   </main>
@@ -342,5 +348,6 @@
   </footer>
 
   <script src="scroll.js"></script>
+  <script src="rail.js"></script>
 </body>
 </html>

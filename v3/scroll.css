@@ -117,7 +117,7 @@
 }
 
 .scrub .career {
-  height: calc(var(--n) * 70vh + 100vh);
+  height: calc(var(--n) * 90vh + 100vh);
 }
 .scrub .career .stage {
   position: sticky;
@@ -844,4 +844,167 @@
   .before span {
     font-size: 0.9375rem;
   }
+}
+
+/* ---------- Side rail ---------- */
+
+.rail-nav {
+  position: fixed;
+  z-index: 50;
+  right: 10px;
+  --fg: #fff;
+  --tip-bg: #fff;
+  --tip-ink: #0f1724;
+  top: calc(50% - min(32vh, 280px));
+  height: min(64vh, 560px);
+  width: 36px;
+  touch-action: none;
+  cursor: ns-resize;
+  user-select: none;
+  -webkit-user-select: none;
+}
+.rail-track {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  margin-left: -1px;
+  border-radius: 2px;
+  background: color-mix(in srgb, var(--fg) 30%, transparent);
+  overflow: hidden;
+}
+.rail-fill {
+  position: absolute;
+  inset: 0;
+  background: var(--fg);
+  transform-origin: 50% 0;
+  transform: scaleY(0);
+}
+.rail-thumb {
+  position: absolute;
+  left: 50%;
+  width: 10px;
+  height: 26px;
+  margin: -13px 0 0 -5px;
+  border-radius: 999px;
+  background: var(--fg);
+  transition: width 0.35s cubic-bezier(0.34, 1.56, 0.64, 1),
+    height 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), margin 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+  pointer-events: none;
+}
+.rail-nav.dragging .rail-thumb {
+  width: 16px;
+  height: 40px;
+  margin: -20px 0 0 -8px;
+}
+.rail-mark {
+  --s: 1;
+  position: absolute;
+  left: 0;
+  width: 36px;
+  height: 22px;
+  margin-top: -11px;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+  font: inherit;
+}
+.rail-dot {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 6px;
+  height: 6px;
+  margin: -3px 0 0 -3px;
+  border-radius: 50%;
+  background: var(--fg);
+  transform: scale(var(--s));
+  transition: transform 0.45s cubic-bezier(0.34, 1.8, 0.64, 1);
+}
+.rail-mark.on .rail-dot {
+  width: 8px;
+  height: 8px;
+  margin: -4px 0 0 -4px;
+}
+.rail-tip {
+  position: absolute;
+  right: calc(100% + 6px);
+  top: 50%;
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: var(--tip-bg);
+  color: var(--tip-ink);
+  font-size: 0.875rem;
+  font-weight: 600;
+  white-space: nowrap;
+  box-shadow: 0 8px 24px -8px rgba(0, 0, 0, 0.45);
+  opacity: 0;
+  transform: translate(10px, -50%) scale(0.5);
+  transform-origin: 100% 50%;
+  transition: opacity 0.2s ease, transform 0.45s cubic-bezier(0.34, 1.8, 0.64, 1);
+  pointer-events: none;
+}
+.rail-tip em {
+  font-style: normal;
+  font-weight: 500;
+  opacity: 0.6;
+  margin-left: 8px;
+}
+.rail-mark.near .rail-tip,
+.rail-mark:focus-visible .rail-tip,
+.rail-nav.dragging .rail-mark.on .rail-tip {
+  opacity: 1;
+  transform: translate(0, -50%) scale(1);
+}
+.rail-nav.dragging .rail-mark.near:not(.on) .rail-tip {
+  opacity: 0;
+}
+.rail-mark:focus-visible {
+  outline: none;
+}
+.rail-mark:focus-visible .rail-dot {
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--fg) 50%, transparent);
+}
+
+@media (max-width: 760px) {
+  .rail-nav {
+    right: 2px;
+    width: 26px;
+    top: 22vh;
+    height: 56vh;
+  }
+  .rail-mark {
+    width: 26px;
+  }
+  .rail-dot {
+    width: 5px;
+    height: 5px;
+    margin: -2.5px 0 0 -2.5px;
+  }
+  .rail-mark .rail-tip {
+    font-size: 0.8125rem;
+  }
+  /* Touch has no hover: only show the current section while dragging. */
+  .rail-mark.near .rail-tip {
+    opacity: 0;
+  }
+  .rail-nav.dragging .rail-mark.on .rail-tip {
+    opacity: 1;
+    transform: translate(0, -50%) scale(1);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .rail-dot,
+  .rail-tip,
+  .rail-thumb {
+    transition: none;
+  }
+}
+
+.rail-nav.on-light {
+  --fg: #0f1724;
+  --tip-bg: #0f1724;
+  --tip-ink: #fff;
 }
