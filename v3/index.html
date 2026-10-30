@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Shiv Godhia</title>
+  <meta name="description" content="Shiv Godhia builds AI agents at Traba in New York, and small tools on the side.">
+  <meta property="og:title" content="Shiv Godhia">
+  <meta property="og:description" content="I build AI agents at Traba in New York, and small tools on the side.">
+  <meta property="og:image" content="https://www.shivgodhia.com/og.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="theme-color" content="#F2F4F6" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#101419" media="(prefers-color-scheme: dark)">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main>
+    <header class="intro wrap">
+      <h1>Shiv Godhia</h1>
+      <div class="intro-body">
+        <img class="me" src="img/me.jpg" width="400" height="400" alt="Shiv, smiling, at an outdoor beer garden">
+        <p class="lede">I build AI agents at <a href="https://www.traba.work">Traba</a> in New York. Before that I spent four years on machine learning infrastructure at <a href="https://www.twosigma.com">Two Sigma</a> in London. On the side I make small tools for things that bug me.</p>
+      </div>
+      <ul class="contact">
+        <li><a href="mailto:shivgodhia@gmail.com">shivgodhia@gmail.com</a></li>
+        <li><a href="https://github.com/shivgodhia">GitHub</a></li>
+        <li><a href="https://www.linkedin.com/in/shivgodhia/">LinkedIn</a></li>
+      </ul>
+    </header>
+
+    <section class="projects" aria-labelledby="made">
+      <h2 id="made" class="wrap">Things I've made</h2>
+
+      <article class="project wrap" style="--tile:#17251a; --tile-ink:#d7e8b0">
+        <a class="tile" href="https://grove.shivgodhia.com" aria-label="Grove website">
+          <picture>
+            <source media="(max-width: 640px)" srcset="img/grove-phone.jpg">
+            <img src="img/grove-desk.jpg" width="1920" height="1200" alt="Grove's homepage: a terminal showing two agents working in parallel worktrees" loading="lazy">
+          </picture>
+        </a>
+        <div class="project-text">
+          <h3><a href="https://grove.shivgodhia.com">Grove</a></h3>
+          <p>Gives every AI coding agent its own workspace: a git worktree of each repo a feature touches, all on one branch, in one tmux session. That way a dozen agents can work in parallel without stepping on each other.</p>
+          <p class="meta">Open source, Zsh and fzf. <a href="https://github.com/shivgodhia/grove">Source on GitHub</a></p>
+        </div>
+      </article>
+
+      <article class="project wrap" style="--tile:#e9e4d8; --tile-ink:#1f5c45">
+        <a class="tile" href="https://skribos.com" aria-label="SkribOS website">
+          <picture>
+            <source media="(max-width: 640px)" srcset="img/skribos-phone.jpg">
+            <img src="img/skribos-desk.jpg" width="1920" height="1200" alt="SkribOS homepage: every voice note, transcribed, summarised and searchable" loading="lazy">
+          </picture>
+        </a>
+        <div class="project-text">
+          <h3><a href="https://skribos.com">SkribOS</a></h3>
+          <p>Turns voice notes, audio and video into searchable transcripts with AI summaries, from the web or a Telegram bot. It has an MCP server, so you can ask Claude questions across everything you've recorded.</p>
+          <p class="meta">Live, with paid plans. TypeScript, Telegraf, Postgres.</p>
+        </div>
+      </article>
+
+      <article class="project wrap" style="--tile:#2f6fa6; --tile-ink:#071a2c">
+        <a class="tile" href="https://hazehowah.com" aria-label="Haze How Ah? website">
+          <picture>
+            <source media="(max-width: 640px)" srcset="img/haze-phone.jpg">
+            <img src="img/haze-desk.jpg" width="1920" height="1200" alt="Haze How Ah? showing 'No problem' over a map of Singapore's air quality by region" loading="lazy">
+          </picture>
+        </a>
+        <div class="project-text">
+          <h3><a href="https://hazehowah.com">Haze How Ah?</a></h3>
+          <p>Answers "can go outside anot?" in Singlish during Singapore's haze season, from NEA's live PM2.5 readings. <a href="https://t.me/HazeHowAhSGBot">The Telegram bot</a> pings you when your side of the island gets hazy.</p>
+          <p class="meta">Live, free, in English and Chinese. Next.js, Supabase.</p>
+        </div>
+      </article>
+    </section>
+
+    <section class="work wrap" aria-labelledby="work">
+      <h2 id="work">Work</h2>
+      <ol class="timeline">
+        <li>
+          <span class="when">2025–now</span>
+          <details>
+            <summary><strong>Software Engineer, Traba</strong> <span>New York</span></summary>
+            <p>On the Agents team, building and scaling Scout, Traba's AI agent that vets workers. <a href="https://traba.work/company/engineering/building-scout">How we built it</a>.</p>
+          </details>
+        </li>
+        <li>
+          <span class="when">2021–25</span>
+          <details>
+            <summary><strong>Machine Learning Engineer, Two Sigma</strong> <span>London</span></summary>
+            <ul>
+              <li>Designed a Ray-based distributed compute framework that keeps work near its data, making ML research workflows 3× faster at half the compute cost.</li>
+              <li>Built and maintained the core library for serialising and shipping models, which made regular automated refits and releases possible firm-wide.</li>
+              <li>Led the work to export 80% of the main time-series forecasting library's models to production.</li>
+              <li>Built a one-click system to simulate, backtest and analyse regularly retrained models.</li>
+              <li>Cut test times for an internal distributed compute framework by 85%.</li>
+            </ul>
+          </details>
+        </li>
+        <li>
+          <span class="when">2020</span>
+          <details>
+            <summary><strong>SDE Intern, Amazon Alexa</strong> <span>Cambridge, UK</span></summary>
+            <p>Added a static type system to the internal language Alexa uses to generate its answers, in ANTLR and Java. Got a return offer.</p>
+          </details>
+        </li>
+        <li>
+          <span class="when">2019</span>
+          <details>
+            <summary><strong>Software Engineer, Scope News</strong> <span>Cambridge, UK</span></summary>
+            <p>Led a summariser for news articles with controllable length, adapting Microsoft's MASS transformer in PyTorch.</p>
+          </details>
+        </li>
+        <li>
+          <span class="when">2019</span>
+          <details>
+            <summary><strong>Data Science Intern, DataProphet</strong> <span>Cape Town</span></summary>
+            <p>Used variational autoencoders in Keras to optimise Mercedes-Benz's C-Class production line.</p>
+          </details>
+        </li>
+        <li>
+          <span class="when">2018–21</span>
+          <details>
+            <summary><strong>Computer Science, University of Cambridge</strong></summary>
+            <p>Undergraduate degree.</p>
+          </details>
+        </li>
+        <li>
+          <span class="when">2018</span>
+          <details>
+            <summary><strong>Software Engineer Intern, A*STAR I2R</strong> <span>Singapore</span></summary>
+            <p>Led a web tool for labelling LiDAR data with 3D bounding boxes, and automated processing of hundreds of terabytes of sensor data a day.</p>
+          </details>
+        </li>
+        <li>
+          <span class="when">2016–17</span>
+          <details>
+            <summary><strong>National Service, Singapore Armed Forces</strong></summary>
+            <p>Built an automated pipeline in Google Apps Script that tracked workouts for 50+ people for six months.</p>
+          </details>
+        </li>
+      </ol>
+    </section>
+
+    <section class="earlier wrap" aria-labelledby="earlier">
+      <h2 id="earlier">Earlier hackathon projects</h2>
+      <ul>
+        <li><a href="https://github.com/microwave-industries/tabwise-backend"><strong>TabWise</strong></a> splits a restaurant bill from a photo of the receipt, with no maths and no accounts. Won the Capital One challenge at Hack King's 6.0.</li>
+        <li><a href="https://xathon.mettl.com/event/internshackathon2020"><strong>Onboard Buddy</strong></a> is an Alexa skill that quizzes new Amazon interns with spaced-repetition flashcards. Built at Amazon's 2020 intern hackathon.</li>
+      </ul>
+    </section>
+  </main>
+
+  <footer class="wrap">
+    <p>Say hi at <a href="mailto:shivgodhia@gmail.com">shivgodhia@gmail.com</a>.</p>
+  </footer>
+</body>
+</html>
