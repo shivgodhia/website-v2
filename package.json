@@ -61,7 +61,8 @@
   },
   "overrides": {
     "undici": "5.28.4",
-    "cheerio": "1.0.0-rc.12"
+    "cheerio": "1.0.0-rc.12",
+    "webpack": "5.108.4"
   },
   "devDependencies": {
     "@babel/core": "^7.14.0",
