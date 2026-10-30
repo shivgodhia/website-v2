@@ -1008,3 +1008,32 @@
   --tip-bg: #0f1724;
   --tip-ink: #fff;
 }
+
+.files {
+  list-style: none;
+  margin: 0;
+  padding: 8px;
+  width: min(100%, 420px);
+  border-radius: 18px;
+  background: var(--card-p);
+  color: var(--card-ink, var(--ink-p));
+  box-shadow: 0 20px 50px -24px rgba(0, 0, 0, 0.45);
+}
+.files li {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 12px 14px;
+  border-radius: 12px;
+}
+.files li + li {
+  border-top: 1px solid color-mix(in srgb, var(--ink-p) 10%, transparent);
+}
+.files em {
+  font-style: normal;
+  color: var(--muted-p);
+  font-variant-numeric: tabular-nums;
+}
+.bubble li b {
+  font-weight: 700;
+}

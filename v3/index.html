@@ -108,7 +108,7 @@
     <section class="proj" data-scrolly id="skribos" data-nav="SkribOS" data-nav-sub="Side project" style="--bg-p:#ebe6d9; --ink-p:#18241f; --muted-p:#5b675f; --accent:#1f6b4f; --card-p:#fffdf8">
       <div class="stage">
         <div class="proj-head">
-          <h2>SkribOS <small>Transcripts and summaries for every voice note</small></h2>
+          <h2>SkribOS <small>A transcription app that plugs into Claude</small></h2>
           <nav class="rail" aria-label="SkribOS">
             <a href="#skribos" data-rail="p">The problem</a>
             <a href="#skribos" data-rail="d">What it does</a>
@@ -117,11 +117,11 @@
         </div>
         <div class="steps">
           <div class="step" data-group="p" data-vis="a">
-            <p class="say">Hours of voice notes, and no way to search them.</p>
+            <p class="say">Hours of recordings, and no way to search them.</p>
           </div>
           <div class="step" data-group="d" data-vis="b">
-            <h3>Send it a voice note, get the gist back</h3>
-            <p>A transcript with speakers, plus the short version, key points and action items.</p>
+            <h3>Any recording in, a transcript and summary out</h3>
+            <p>Audio, video, documents or a Dropbox link. Speakers, timestamps, key points and action items.</p>
           </div>
           <div class="step" data-group="d" data-vis="c">
             <h3>Record from your wrist</h3>
@@ -129,7 +129,7 @@
           </div>
           <div class="step" data-group="d" data-vis="d">
             <h3>Ask Claude about everything you've recorded</h3>
-            <p>An MCP server connects your archive to Claude and ChatGPT.</p>
+            <p>Its MCP server gives Claude and ChatGPT 19 tools for searching and reading your transcripts.</p>
           </div>
           <div class="step" data-group="s" data-vis="e">
             <ul class="stats">
@@ -141,19 +141,19 @@
         </div>
         <div class="visuals" aria-hidden="true">
           <div class="vis" data-vis-id="a">
-            <div class="chat">
-              <div class="bubble"><small>Coach</small>▶︎ Voice message · 4:12</div>
-              <div class="bubble"><small>Coach</small>▶︎ Voice message · 6:47</div>
-              <div class="bubble"><small>Coach</small>▶︎ Voice message · 3:05</div>
-              <div class="bubble mine">Will listen later 🙏</div>
-            </div>
+            <ul class="files">
+              <li><span>Team offsite.m4a</span><em>2:14:09</em></li>
+              <li><span>Customer call, Tuesday.mp4</span><em>58:12</em></li>
+              <li><span>Lecture 7.mp3</span><em>1:24:03</em></li>
+              <li><span>Voice note</span><em>6:47</em></li>
+            </ul>
           </div>
           <div class="vis" data-vis-id="b">
             <div class="chat">
-              <div class="bubble mine">▶︎ Voice message · 6:47</div>
-              <div class="bubble"><small>SkribOS</small><strong>TL;DR</strong> Keep the Friday review. Move the launch to the 16th.
-                <ul><li>Ship onboarding first</li><li>Cut the referral email</li></ul>
-                <strong>Action items</strong><ul><li>Send the revised plan by Thursday</li></ul>
+              <div class="bubble mine">Customer call, Tuesday.mp4 · 58:12</div>
+              <div class="bubble"><small>SkribOS</small><strong>Summary</strong> They want SSO before signing. Pilot starts on the 16th.
+                <ul><li><b>Priya</b> 04:12 · asked about data retention</li><li><b>Sam</b> 11:40 · agreed to a 3-month pilot</li></ul>
+                <strong>Action items</strong><ul><li>Send the security doc by Friday</li></ul>
               </div>
             </div>
           </div>
@@ -162,8 +162,8 @@
           </div>
           <div class="vis" data-vis-id="d">
             <div class="chat">
-              <div class="bubble mine">What did my coach say about pricing over the last month?</div>
-              <div class="bubble"><small>Claude, using SkribOS</small>Across 6 recordings: start with one paid plan, don't discount in the first month, and test annual pricing after 100 users.</div>
+              <div class="bubble mine">What did customers say about pricing in last month's calls?</div>
+              <div class="bubble"><small>Claude, using SkribOS</small>Across 6 calls: three asked for annual billing, two found the per-seat price confusing, and one wanted a free pilot first.</div>
             </div>
           </div>
           <div class="vis" data-vis-id="e"><img class="app-icon" src="img/skribos-icon.png" width="360" height="360" alt=""></div>
