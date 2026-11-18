@@ -3,7 +3,9 @@
    the finished desktop and scrolls normally. */
 (function() {
   const story = document.getElementById('story');
-  if (!story) {return;}
+  if (!story) {
+    return;
+  }
   const $ = function(s, r) {
     return (r || document).querySelector(s);
   };
@@ -41,7 +43,7 @@
   const alertTo = $('#alert-to');
   const alertText = $('#alert-text');
   const cursor = $('#cursor');
-  const buttons = { send: $('#ab-send'), always: $('#ab-always') };
+  const allow = $('#ab-send');
   const preSarah = $('#pre-sarah');
   const preMike = $('#pre-mike');
 
@@ -52,16 +54,16 @@
     [0, 'Ask Claude once.'],
     [0, 'Claude reads the threads you allow. The rest stay hidden.'],
     [1, 'It works out an order that leaves you time to travel.'],
-    [2, 'Before anything sends, your Mac asks you.'],
-    [2, 'You say yes. The text goes out as you.'],
+    [2, 'Before anything sends, Claude asks you.'],
+    [2, 'You click Allow. The text goes out as you.'],
     [2, 'Every text gets the same check.'],
     [2, 'Nothing sends without your yes.'],
-    [2, 'Trust someone? Allow them once.'],
-    [2, 'Claude can text Sarah freely now. Mike still asks.'],
+    [2, 'Sarah writes back. Claude drafts the reply.'],
+    [2, 'You allow it, and it sends.'],
     [3, 'Two viewings booked. You typed one sentence.'],
   ];
 
-  // The three times the dialog appears: when, to whom, what, which button.
+  // The three times Claude asks: when, to whom, what.
   const ASKS = [
     {
       from: 5,
@@ -70,7 +72,6 @@
       to: 6.5,
       who: 'Sarah',
       text: '6pm works. See you Thursday!',
-      button: 'send',
       tool: '#send-1',
     },
     {
@@ -80,7 +81,6 @@
       to: 8.5,
       who: 'Mike',
       text: 'Could we do 7:15? I’m coming from another viewing across town.',
-      button: 'send',
       tool: '#send-2',
     },
     {
@@ -90,7 +90,6 @@
       to: 10.5,
       who: 'Sarah',
       text: 'Will do, thanks!',
-      button: 'always',
       tool: '#send-3',
     },
   ];
@@ -104,20 +103,40 @@
   }
 
   function activeChat(s) {
-    if (s < 0.25) {return 'none';}
-    if (s >= 7 && s < 9) {return 'mike';}
-    if (s >= 11) {return 'mike';}
+    if (s < 0.25) {
+      return 'none';
+    }
+    if (s >= 7 && s < 9) {
+      return 'mike';
+    }
+    if (s >= 11) {
+      return 'mike';
+    }
     return 'sarah';
   }
 
   // On a phone only one window fits, so show the one the beat is about.
   function focus(s) {
-    if (s < 2) {return 'msg';}
-    if (s < 3.55) {return 'claude';}
-    if (s < 4) {return 'msg';}
-    if (s < 5) {return 'claude';}
-    if (s < 11.3) {return 'msg';}
-    return 'claude';
+    if (s < 2) {
+      return 'msg';
+    }
+    if (s < 3.55) {
+      return 'claude';
+    }
+    if (s < 4) {
+      return 'msg';
+    }
+    if (s < 5) {
+      return 'claude';
+    }
+    if (s >= 11.3) {
+      return 'claude';
+    }
+    // Claude while it is asking, Messages to watch the text go out.
+    const asking = ASKS.some(function(a) {
+      return s >= a.from && s < a.to;
+    });
+    return asking ? 'claude' : 'msg';
   }
 
   let lastBeat = -1;
@@ -180,40 +199,32 @@
     spark.classList.toggle('busy', thinking);
     travel.style.setProperty('--g', clamp((s - 4.25) / 0.5).toFixed(3));
 
-    // The dialog.
+    // Claude's permission prompt.
     let ask = null;
     ASKS.forEach(function(a) {
       const waiting = s >= a.from && s < a.to;
-      if (waiting) {ask = a;}
+      if (waiting) {
+        ask = a;
+      }
       a.toolEl.classList.toggle('wait', waiting);
-      a.label.textContent =
-        `Text ${ 
-          a.who 
-        }${waiting
-          ? ': waiting for you'
-          : a.button === 'always'
-            ? ': sent, always allowed'
-            : ': sent'}`;
+      a.label.textContent = `Text ${a.who}${waiting ? ': waiting for you' : ': sent'}`;
     });
     alertBox.classList.toggle('show', !!ask);
     desk.classList.toggle('asking', !!ask);
     if (ask) {
       if (ask !== lastAsk) {
-        alertTo.textContent = `To: ${  ask.who}`;
+        alertTo.textContent = `To: ${ask.who}`;
         alertText.textContent = ask.text;
       }
-      const button = buttons[ask.button];
       const moving = s >= ask.cursor;
-      const x = moving ? button.offsetLeft + button.offsetWidth * 0.66 : alertBox.offsetWidth + 46;
-      const y = moving ? button.offsetTop + button.offsetHeight * 0.45 : alertBox.offsetHeight + 30;
-      cursor.style.transform = `translate(${  x.toFixed(0)  }px,${  y.toFixed(0)  }px)`;
+      const x = moving ? allow.offsetLeft + allow.offsetWidth * 0.86 : alertBox.offsetWidth * 0.3;
+      const y = moving ? allow.offsetTop + allow.offsetHeight * 0.6 : -34;
+      cursor.style.transform = `translate(${x.toFixed(0)}px,${y.toFixed(0)}px)`;
       cursor.classList.toggle('on', s >= ask.cursor - 0.15);
-      buttons.send.classList.toggle('press', ask.button === 'send' && s >= ask.press);
-      buttons.always.classList.toggle('press', ask.button === 'always' && s >= ask.press);
+      allow.classList.toggle('press', s >= ask.press);
     } else {
       cursor.classList.remove('on');
-      buttons.send.classList.remove('press');
-      buttons.always.classList.remove('press');
+      allow.classList.remove('press');
     }
     lastAsk = ask;
 
@@ -227,8 +238,8 @@
     const h = desk.offsetHeight;
     const scale = Math.min(1, fit.clientWidth / w, fit.clientHeight / h);
     desk.style.setProperty('--s', scale.toFixed(4));
-    desk.style.marginBottom = `${(-(1 - scale) * h).toFixed(1)  }px`;
-    desk.style.marginInline = `${((-(1 - scale) * w) / 2).toFixed(1)  }px`;
+    desk.style.marginBottom = `${(-(1 - scale) * h).toFixed(1)}px`;
+    desk.style.marginInline = `${((-(1 - scale) * w) / 2).toFixed(1)}px`;
   }
 
   let queued = false;
