@@ -1,0 +1,231 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Shiv Godhia: AI engineer for hire</title>
+<meta name="description" content="Freelance AI engineer. I get AI features working in production, with evals that show what changed: accuracy, speed and cost.">
+<link rel="icon" href="/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,300..800&family=Source+Serif+4:ital,opsz,wght@0,8..60,300..700;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/styles.css?v=2">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="top">
+  <a class="wordmark" href="/">Shiv Godhia</a>
+  <nav aria-label="Main">
+    <a href="#work">Work</a>
+    <a href="#services">Services</a>
+    <a href="#apps">Apps</a>
+    <a href="/cv">CV</a>
+  </nav>
+  <a class="btn btn-small" href="mailto:shivgodhia@gmail.com?subject=Call%20about%20an%20AI%20project">Book a call</a>
+</header>
+
+<main id="main">
+
+<section class="hero">
+  <div class="wrap">
+    <h1>I get AI features working in production, and measure every step.</h1>
+    <p class="lede">I'm a freelance AI engineer. At Traba I made its busiest AI pipelines 86–95% cheaper, and more accurate too. Before that I spent four years building machine learning infrastructure at Two Sigma.</p>
+    <div class="actions">
+      <a class="btn" href="mailto:shivgodhia@gmail.com?subject=Call%20about%20an%20AI%20project">Book a 30-minute call</a>
+      <a class="link" href="#method">See how I work</a>
+    </div>
+    <dl class="proof">
+      <div><dt>Resume errors</dt><dd><s>31%</s> 8%</dd></div>
+      <div><dt>Call grading accuracy</dt><dd><s>84%</s> 94%</dd></div>
+      <div><dt>Grading bill, per month</dt><dd><s>$871</s> $38</dd></div>
+    </dl>
+  </div>
+</section>
+
+<section class="problem">
+  <div class="wrap narrow">
+    <h2>The demo is the easy part.</h2>
+    <p>A prompt that looks right on ten examples breaks on the ten-thousandth. Providers retire the model you built on, prices double, and when someone swaps in a new one nobody can say whether it's better or worse. Most teams find out from a customer.</p>
+    <p>I fix that by building the answer key first. Once you can score a change, every prompt edit and model swap becomes a measured decision instead of a guess.</p>
+  </div>
+</section>
+
+<section class="method" id="method" aria-labelledby="method-title">
+  <div class="wrap">
+    <h2 id="method-title">One pipeline, start to finish</h2>
+    <p class="intro">Traba reads about 37,000 resumes a month with an LLM, to work out where each worker has worked and for how long. Here's what fixing it looked like.</p>
+
+    <div class="method-grid">
+      <ol class="steps">
+        <li class="step" data-before="" data-after="248" data-unit="resumes checked by people">
+          <h3>Build the answer key</h3>
+          <p>People reviewed 248 resumes by hand, in an annotation tool I built for it. From then on, "better" had a definition.</p>
+          <p class="inline-metric"><b>248</b> reviewed resumes</p>
+        </li>
+        <li class="step" data-before="" data-after="31%" data-unit="of resumes had a mistake">
+          <h3>Find out why it's wrong</h3>
+          <p>Almost a third of resumes came back with at least one error. Three causes covered most of them. The model didn't know today's date, so "Present" became 2024. It guessed months it couldn't see. And it named the staffing agency instead of the company the person actually worked at.</p>
+          <p class="inline-metric"><b>31%</b> of resumes had a mistake</p>
+        </li>
+        <li class="step" data-before="31%" data-after="8%" data-unit="of resumes had a mistake">
+          <h3>Fix the prompt, then re-test</h3>
+          <p>One fix per cause, each run three times against the answer key. Along the way the comparison caught about ten mistakes in the human labels too.</p>
+          <p class="inline-metric"><s>31%</s> <b>8%</b> of resumes had a mistake</p>
+        </li>
+        <li class="step" data-before="$0.022" data-after="$0.003" data-unit="per resume">
+          <h3>Swap the model</h3>
+          <p>With an answer key, changing models stops being a leap of faith. Claude Haiku matched Gemini's accuracy at about a seventh of the price.</p>
+          <p class="inline-metric"><s>$0.022</s> <b>$0.003</b> per resume</p>
+        </li>
+        <li class="step" data-before="" data-after="−86%" data-unit="cost, live since 29 Oct 2026">
+          <h3>Ship it</h3>
+          <p>Live in production on 29 October 2026. At current volume that's about $8,300 a year saved, on a pipeline that is now four times less likely to get a resume wrong.</p>
+          <p class="inline-metric"><b>−86%</b> cost, live since 29 Oct 2026</p>
+        </li>
+      </ol>
+      <div class="dial" aria-hidden="true">
+        <div class="dial-inner">
+          <p class="dial-step"><span class="dial-n">1</span> of 5</p>
+          <p class="dial-num"><s class="dial-before"></s><span class="dial-after">248</span></p>
+          <p class="dial-unit">resumes checked by people</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="work" id="work">
+  <div class="wrap">
+    <h2>The same method on other problems</h2>
+    <p class="intro">All shipped at Traba, a Series A staffing marketplace, between 2025 and 2026.</p>
+
+    <article class="case">
+      <h3>Grading recruiter calls</h3>
+      <div class="case-body">
+        <p><span class="tag">Problem</span> An AI grades every screening call to decide whether a worker qualifies for a job. Google retired the model it ran on. The replacement cost 3.6 times more and got 84% of answers right.</p>
+        <p><span class="tag">What I did</span> Built a 1,793-answer graded set from 167 real calls with the ops team, rewrote the criteria for all 37 questions, merged two model calls into one, then moved it to GPT-6 Luna.</p>
+      </div>
+      <ul class="case-nums">
+        <li><s>84%</s> <b>94%</b> accurate</li>
+        <li><s>38s</s> <b>9s</b> median time</li>
+        <li><s>$871</s> <b>$38</b> a month</li>
+      </ul>
+    </article>
+
+    <article class="case">
+      <h3>Testing an AI phone recruiter</h3>
+      <div class="case-body">
+        <p><span class="tag">Problem</span> Traba screens workers over the phone with nine voice agents. Nobody could tell whether a prompt or model change made the calls better or worse.</p>
+        <p><span class="tag">What I did</span> A suite of 46 tests, 18 of them replays of real calls mined from 2,400 production calls, scored on 16 metrics. Then a bake-off across six models and a move to the winner.</p>
+      </div>
+      <ul class="case-nums">
+        <li><s>86%</s> <b>100%</b> required questions asked</li>
+        <li><s>15</s> <b>4</b> stalled or silent calls</li>
+        <li><b>4×</b> cheaper per minute of LLM time</li>
+      </ul>
+    </article>
+
+    <article class="case">
+      <h3>Trying new models on live traffic, safely</h3>
+      <div class="case-body">
+        <p><span class="tag">Problem</span> Traba's internal agent can change real data. Testing a new model on it means risking a bad write in production.</p>
+        <p><span class="tag">What I did</span> A shadow lane. Candidate models answer a sample of live requests next to production with read-only tools, and an LLM judge compares the two answers. Users see no added latency.</p>
+      </div>
+      <ul class="case-nums">
+        <li><b>731</b> production runs</li>
+        <li><b>414 of 414</b> attempted writes blocked</li>
+        <li><b>$0.04</b> a run</li>
+      </ul>
+    </article>
+
+    <p class="also">Also: live parcel tracking across four carriers in two days, to close a $240K customer deal. It had failed on 86% of lookups before.</p>
+  </div>
+</section>
+
+<section class="services" id="services">
+  <div class="wrap">
+    <h2>Ways to work together</h2>
+    <div class="offers">
+      <article class="offer">
+        <h3>AI audit</h3>
+        <p class="term">About two weeks, fixed price</p>
+        <p>I trace the AI features you already run, build an answer key from your real traffic, and test the models you could switch to. You get a ranked list of fixes, each with its cost and accuracy.</p>
+      </article>
+      <article class="offer">
+        <h3>Agent build</h3>
+        <p class="term">Four to eight weeks</p>
+        <p>A voice agent, an internal agent with tools, or an extraction pipeline. It ships with its own test suite and a safe way to roll out changes later.</p>
+      </article>
+      <article class="offer">
+        <h3>AI for your team</h3>
+        <p class="term">Monthly</p>
+        <p>I set your engineers up to work with coding agents: Claude Code setups, shared skills, internal bots and MCP servers. It's the tooling I use to ship my own apps.</p>
+      </article>
+    </div>
+    <p class="price-note">Every engagement starts with a 30-minute call. I quote a fixed price after it.</p>
+  </div>
+</section>
+
+<section class="apps" id="apps">
+  <div class="wrap">
+    <h2>Apps I've built on my own</h2>
+    <p class="intro">In the evenings I run coding agents in parallel and ship my own products. Each one is live or in beta.</p>
+    <ul class="app-list">
+      <li>
+        <img src="/img/skribos-icon.png" alt="" width="56" height="56">
+        <div><h3><a href="https://skribos.com">SkribOS</a></h3>
+        <p>A transcription app that plugs into Claude. Record from your Apple Watch, iPhone, the web or Telegram, then ask Claude about everything you've recorded. Listed in Claude's connector directory.</p></div>
+      </li>
+      <li>
+        <img src="/imessage-mcp/icon.png" alt="" width="56" height="56">
+        <div><h3><a href="/imessage-mcp/">iMessage MCP</a></h3>
+        <p>Lets Claude read and send your texts, locally on your Mac. A signed, notarized app, open source.</p></div>
+      </li>
+      <li>
+        <img src="/img/gf-icon.png" alt="" width="56" height="56">
+        <div><h3>Ghost Fighter</h3>
+        <p>An iPhone fighting game where you train a ghost of yourself and dare friends to beat it. In TestFlight.</p></div>
+      </li>
+      <li>
+        <img src="/img/haze-mascot.png" alt="" width="56" height="56">
+        <div><h3><a href="https://hazehowah.com">Haze How Ah?</a></h3>
+        <p>Singapore's air quality, answered in Singlish, with a Telegram bot that pings you when the haze gets bad. Live one day after the first commit.</p></div>
+      </li>
+      <li>
+        <img src="/img/grove-mark.svg" alt="" width="56" height="56">
+        <div><h3><a href="https://github.com/shivgodhia/grove">Grove</a></h3>
+        <p>One command gives every AI agent its own workspace across all your repos. I built everything on this page with it.</p></div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<section class="career">
+  <div class="wrap">
+    <h2>Before this</h2>
+    <ol class="timeline">
+      <li><span class="when">2025–2026</span><span class="what"><b>Traba</b>, software engineer on the Agents team, New York</span></li>
+      <li><span class="when">2021–2025</span><span class="what"><b>Two Sigma</b>, machine learning engineer, London</span></li>
+      <li><span class="when">2020</span><span class="what"><b>Amazon</b>, Alexa intern, Cambridge</span></li>
+      <li><span class="when">2018–2021</span><span class="what"><b>University of Cambridge</b>, BA and MA in Computer Science</span></li>
+    </ol>
+    <a class="link" href="/cv">Read the full CV</a>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="wrap narrow">
+    <h2>Have an AI feature that's flaky or expensive?</h2>
+    <p>Send me a couple of lines on what it does and what's going wrong, and we'll set up a call.</p>
+    <div class="actions">
+      <a class="btn" href="mailto:shivgodhia@gmail.com?subject=Call%20about%20an%20AI%20project">Email shivgodhia@gmail.com</a>
+    </div>
+    <p class="elsewhere"><a href="https://www.linkedin.com/in/shivgodhia/">LinkedIn</a> <a href="https://github.com/shivgodhia">GitHub</a> <a href="https://x.com/shivgodhia">X</a></p>
+  </div>
+</section>
+
+</main>
+<script src="/method.js?v=1" defer></script>
+</body>
+</html>
