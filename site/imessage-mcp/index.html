@@ -1,0 +1,245 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>iMessage MCP: let Claude answer your texts</title>
+<meta name="description" content="A free Mac app that lets Claude read your iMessages and reply for you. Claude asks before it sends.">
+<link rel="canonical" href="https://www.shivgodhia.com/imessage-mcp/">
+<meta property="og:title" content="iMessage MCP: let Claude answer your texts">
+<meta property="og:description" content="A free Mac app that lets Claude read your iMessages and reply for you. Claude asks before it sends.">
+<meta property="og:image" content="https://www.shivgodhia.com/imessage-mcp/icon.png?v=3">
+<meta property="og:url" content="https://www.shivgodhia.com/imessage-mcp/">
+<meta name="twitter:card" content="summary">
+<meta name="theme-color" content="#F6F7F9">
+<link rel="icon" href="icon.png?v=3">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css?v=3">
+</head>
+<body>
+
+<header class="top">
+  <a class="brand" href="#top" aria-label="iMessage MCP">
+    <img src="icon.png?v=3" alt="" width="36" height="36">
+    <span>iMessage MCP</span>
+  </a>
+  <nav>
+    <a href="https://github.com/shivgodhia/imessage-mcp">GitHub</a>
+    <a class="btn small" href="https://github.com/shivgodhia/imessage-mcp/releases/latest/download/iMessage-MCP.dmg">Download</a>
+  </nav>
+</header>
+
+<main id="top">
+
+<!-- The headline is a text exchange: the pitch arrives, you answer it. -->
+<section class="hero">
+  <h1>
+    <span class="bubble in">Let Claude answer your&nbsp;texts.</span>
+    <span class="bubble out">You just say&nbsp;yes.</span>
+  </h1>
+  <p class="lede">A free Mac app that lets Claude read your iMessages and reply for you. Claude asks before it sends.</p>
+  <div class="cta">
+    <a class="btn" href="https://github.com/shivgodhia/imessage-mcp/releases/latest/download/iMessage-MCP.dmg">Download for Mac</a>
+    <a class="quiet" href="https://github.com/shivgodhia/imessage-mcp">See the code on GitHub</a>
+  </div>
+  <p class="needs">Works with the Claude Mac app, on macOS 12 or later.</p>
+</section>
+
+<!-- One Mac desktop, pinned. Scroll position decides what is on it. -->
+<section class="story" id="story" aria-label="How it works: booking two apartment viewings">
+  <div class="pin">
+    <div class="story-head">
+      <ol class="pillars" aria-hidden="true">
+        <li data-pillar="0">Reads</li>
+        <li data-pillar="1">Replies</li>
+        <li data-pillar="2">Asks first</li>
+      </ol>
+      <p class="caption" id="caption" aria-live="polite">Two viewings booked. You typed one sentence.</p>
+    </div>
+
+    <div class="desk-fit" id="desk-fit">
+      <div class="desk" id="desk" data-focus="msg">
+
+        <!-- Messages -->
+        <div class="win msg" id="msg">
+          <div class="win-bar"><i></i><i></i><i></i><b>Messages</b></div>
+          <div class="msg-body">
+            <ul class="msg-list">
+              <li class="row" data-chat="sarah" data-at="0.25">
+                <span class="av a1">S</span>
+                <span class="who"><b>Sarah</b><span class="pre" id="pre-sarah">Perfect. Buzz 4B when you get here.</span></span>
+              </li>
+              <li class="row" data-chat="mike" data-at="1.15">
+                <span class="av a2">M</span>
+                <span class="who"><b>Mike</b><span class="pre" id="pre-mike">7:15 works 👍</span></span>
+              </li>
+              <li class="row private" data-chat="mom">
+                <span class="av a3">M</span>
+                <span class="who"><b>Mom <em class="badge lock" data-at="3.55">Hidden from Claude</em></b><span class="pre">Call me when you can ❤️</span></span>
+              </li>
+              <li class="row private" data-chat="crew">
+                <span class="av a4">W</span>
+                <span class="who"><b>Weekend crew <em class="badge lock" data-at="3.7">Hidden from Claude</em></b><span class="pre">who's bringing the speaker</span></span>
+              </li>
+            </ul>
+
+            <div class="threads">
+              <div class="thread" data-chat="sarah">
+                <p class="to">To: <b>Sarah</b></p>
+                <div class="bubbles">
+                  <p class="time" data-at="0.25">Today 4:12 PM</p>
+                  <p class="b in" data-at="0.25">Hi! The 2BR on Elm St is still available. Could you do Thursday at 6 or 6:30?</p>
+                  <p class="b out" data-at="6.5">6pm works. See you Thursday!</p>
+                  <p class="stamp" data-at="6.75" data-until="9">Delivered</p>
+                  <p class="b in" data-at="9">Perfect. Buzz 4B when you get here.</p>
+                  <p class="b out" data-at="10.5">Will do, thanks!</p>
+                  <p class="stamp" data-at="10.75">Delivered</p>
+                </div>
+              </div>
+              <div class="thread" data-chat="mike">
+                <p class="to">To: <b>Mike</b></p>
+                <div class="bubbles">
+                  <p class="time" data-at="1.15">Today 4:20 PM</p>
+                  <p class="b in" data-at="1.15">Oak Ave studio: I'm showing it Thursday 5 to 8. What time works?</p>
+                  <p class="b out" data-at="8.5">Could we do 7:15? I'm coming from another viewing across town.</p>
+                  <p class="stamp" data-at="8.75" data-until="11">Delivered</p>
+                  <p class="b in" data-at="11">7:15 works 👍</p>
+                </div>
+              </div>
+              <div class="thread empty" data-chat="none">
+                <p class="hint">No conversation selected</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Claude -->
+        <div class="win claude" id="claude">
+          <div class="win-bar"><i></i><i></i><i></i><b>Claude</b></div>
+          <div class="chat">
+            <div class="chat-flow">
+              <p class="you" data-at="2"><span id="typed">Book both viewings for Thursday. Leave me time to get between them.</span><span class="caret" id="caret"></span></p>
+
+              <div class="turn" data-at="3">
+                <span class="spark" id="spark" aria-hidden="true"></span>
+                <div class="turn-body">
+                  <p class="tool" data-at="3.1"><img src="icon.png?v=3" alt="">Read Sarah's conversation<i></i></p>
+                  <p class="tool" data-at="3.35"><img src="icon.png?v=3" alt="">Read Mike's conversation<i></i></p>
+
+                  <div class="plan" data-at="4.1">
+                    <p class="plan-title">Thursday evening</p>
+                    <ol>
+                      <li><b>6:00</b><span>Elm St with Sarah</span></li>
+                      <li class="gap"><b></b><span><i id="travel"></i>about 25 min across town</span></li>
+                      <li><b>7:15</b><span>Oak Ave with Mike</span></li>
+                    </ol>
+                  </div>
+
+                  <p class="tool send" data-at="5" id="send-1"><img src="icon.png?v=3" alt=""><span>Text Sarah: waiting for you</span><i></i></p>
+                  <p class="tool send" data-at="7" id="send-2"><img src="icon.png?v=3" alt=""><span>Text Mike: waiting for you</span><i></i></p>
+                  <p class="tool send" data-at="9.4" id="send-3"><img src="icon.png?v=3" alt=""><span>Text Sarah: waiting for you</span><i></i></p>
+
+                  <p class="answer" data-at="11.3">Both booked for Thursday: 6:00 at Elm St with Sarah, then 7:15 at Oak Ave with Mike. Buzz 4B at Sarah's.</p>
+                </div>
+              </div>
+            </div>
+            <div class="composer"><span>Reply to Claude</span></div>
+
+            <!-- Claude's own permission prompt: the only approval there is -->
+            <div class="alert" id="alert" role="img" aria-label="Claude asks whether to send this text, with buttons Deny, Always allow and Allow once">
+              <p class="alert-title"><img src="icon.png?v=3" alt="" width="18" height="18">Claude wants to send a text</p>
+              <p class="alert-to" id="alert-to">To: Sarah</p>
+              <p class="alert-text" id="alert-text">6pm works. See you Thursday!</p>
+              <div class="alert-buttons">
+                <span class="ab">Deny</span>
+                <span class="ab">Always allow</span>
+                <span class="ab primary" id="ab-send">Allow once</span>
+              </div>
+              <span class="cursor" id="cursor" aria-hidden="true"></span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="install" id="install">
+  <h2>Three steps, about a minute</h2>
+  <ol class="steps">
+    <li>
+      <div class="vis drag" aria-hidden="true">
+        <img src="icon.png?v=3" alt="">
+        <svg viewBox="0 0 60 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h48M42 4l10 8-10 8"/></svg>
+        <span class="folder"><i></i></span>
+      </div>
+      <h3>Download it and drag it to Applications</h3>
+      <p>It is under 1 MB, signed and checked by Apple.</p>
+    </li>
+    <li>
+      <div class="vis open" aria-hidden="true">
+        <div class="mini-alert">
+          <img src="icon.png?v=3" alt="">
+          <b>One switch left</b>
+          <span>Open Settings</span>
+        </div>
+      </div>
+      <h3>Open it once</h3>
+      <p>It connects itself to the Claude app and tells you what is left.</p>
+    </li>
+    <li>
+      <div class="vis switch" aria-hidden="true">
+        <div class="setting">
+          <img src="icon.png?v=3" alt="">
+          <span>iMessage MCP</span>
+          <i class="toggle" id="toggle"></i>
+        </div>
+      </div>
+      <h3>Flip one switch</h3>
+      <p>Turn on Full Disk Access so it can read your messages, then restart Claude.</p>
+    </li>
+  </ol>
+  <div class="cta center">
+    <a class="btn" href="https://github.com/shivgodhia/imessage-mcp/releases/latest/download/iMessage-MCP.dmg">Download for Mac</a>
+  </div>
+</section>
+
+<section class="facts">
+  <h2>Before you trust it with your texts</h2>
+  <dl>
+    <div>
+      <dt>It runs on your Mac</dt>
+      <dd>There is nothing to sign up for and it has no server of its own. It reads Messages on your Mac and hands Claude only the conversations Claude asks for.</dd>
+    </div>
+    <div>
+      <dt>You decide what Claude sees</dt>
+      <dd>List the conversations Claude may read. Everything else stays invisible to it.</dd>
+    </div>
+    <div>
+      <dt>You approve what goes out</dt>
+      <dd>Claude shows you the recipient and the exact words and asks before it sends, the same way it asks for any other connector. You can also switch sending off completely.</dd>
+    </div>
+    <div>
+      <dt>The code is open</dt>
+      <dd>About 1,500 lines of Swift under the MIT license. <a href="https://github.com/shivgodhia/imessage-mcp">Read it on GitHub</a>.</dd>
+    </div>
+    <div>
+      <dt>What it can't do yet</dt>
+      <dd>Send photos, react, or mark messages as read. It works on Mac only, and Claude checks your texts when you ask it to.</dd>
+    </div>
+  </dl>
+</section>
+
+</main>
+
+<footer>
+  <p>Made by <a href="https://www.shivgodhia.com">Shiv Godhia</a>. Free and open source.</p>
+  <p class="fine">Not affiliated with Apple or Anthropic. iMessage is a trademark of Apple Inc. Claude is a trademark of Anthropic.</p>
+</footer>
+
+<script src="story.js?v=3"></script>
+</body>
+</html>
