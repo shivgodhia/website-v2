@@ -54,7 +54,7 @@
       <div class="examples" role="tablist" aria-label="Examples">
         <span class="ex-label">Two examples</span>
         <button type="button" role="tab" class="ex" data-ex="rent" aria-selected="true">Booking viewings</button>
-        <button type="button" role="tab" class="ex" data-ex="dinner" aria-selected="false">Planning a dinner</button>
+        <button type="button" role="tab" class="ex" data-ex="dates" aria-selected="false">Setting up dates</button>
       </div>
       <ol class="pillars" aria-hidden="true">
         <li data-pillar="0">Reads</li>
@@ -169,52 +169,52 @@
 
       </div>
 
-      <!-- Example two: one group chat, everyone free on a different night -->
-      <div class="desk" data-ex="dinner" data-focus="msg" hidden>
+      <!-- Example two: two Hinge matches moved to text, both want to meet this week -->
+      <div class="desk" data-ex="dates" data-focus="msg" hidden>
 
         <div class="win msg">
           <div class="win-bar"><i></i><i></i><i></i><b>Messages</b></div>
           <div class="msg-body">
             <ul class="msg-list">
-              <li class="row" data-chat="dinner" data-at="0.25">
-                <span class="av">🍝</span>
-                <span class="who"><b>Dinner</b><span class="pre" data-pre="dinner">Priya: See you there!</span></span>
+              <li class="row" data-chat="sophie" data-at="0.25">
+                <span class="av">S</span>
+                <span class="who"><b>Sophie</b><span class="pre" data-pre="sophie">Can't wait 😊</span></span>
+              </li>
+              <li class="row" data-chat="maya" data-at="1.15">
+                <span class="av">M</span>
+                <span class="who"><b>Maya</b><span class="pre" data-pre="maya">Ok you had me at jukebox 😏</span></span>
               </li>
               <li class="row private" data-chat="mom" data-lock="3.55">
                 <span class="av">M</span>
                 <span class="who"><b>Mom <em class="badge lock" data-at="3.55">Hidden from Claude</em></b><span class="pre">Call me when you can ❤️</span></span>
               </li>
-              <li class="row private" data-chat="work" data-lock="3.7">
-                <span class="av">A</span>
-                <span class="who"><b>Alex <em class="badge lock" data-at="3.7">Hidden from Claude</em></b><span class="pre">can you look at the deck tonight?</span></span>
+              <li class="row private" data-chat="boys" data-lock="3.7">
+                <span class="av">B</span>
+                <span class="who"><b>The boys <em class="badge lock" data-at="3.7">Hidden from Claude</em></b><span class="pre">so how'd the date go</span></span>
               </li>
             </ul>
 
             <div class="threads">
-              <div class="thread" data-chat="dinner">
-                <p class="to">To: <b>Priya, Tom, Jess</b></p>
+              <div class="thread" data-chat="sophie">
+                <p class="to">To: <b>Sophie</b></p>
                 <div class="bubbles">
-                  <p class="time" data-at="0.25">Today 2:41 PM</p>
-                  <p class="from" data-at="0.25">Priya</p>
-                  <p class="b in" data-at="0.25">Dinner next week? I can do Tue or Thu</p>
-                  <p class="from" data-at="1">Tom</p>
-                  <p class="b in" data-at="1">Thu's out for me. Tue or Wed?</p>
-                  <p class="from" data-at="1.4">Jess</p>
-                  <p class="b in" data-at="1.4">Wed's bad. Tue I'm at pilates till 7:30</p>
-                  <p class="b out" data-at="6.5">How about Tuesday at 8? It's the one night we're all free, and Jess is done with pilates by then.</p>
-                  <p class="stamp" data-at="6.75" data-until="7">Delivered</p>
-                  <p class="from" data-at="7">Tom</p>
-                  <p class="b in" data-at="7">Tue at 8 👍</p>
-                  <p class="from" data-at="7.3">Priya</p>
-                  <p class="b in" data-at="7.3">Yes! Same Thai place as last time?</p>
-                  <p class="b out" data-at="8.5">Same place works for me 🙌</p>
-                  <p class="stamp" data-at="8.75" data-until="9">Delivered</p>
-                  <p class="from" data-at="9">Jess</p>
-                  <p class="b in" data-at="9">Can we make it 8:30? Pilates sometimes runs over 😅</p>
-                  <p class="b out" data-at="10.5">8:30 it is. See everyone Tuesday!</p>
-                  <p class="stamp" data-at="10.75" data-until="11">Delivered</p>
-                  <p class="from" data-at="11">Priya</p>
-                  <p class="b in" data-at="11">See you there!</p>
+                  <p class="time" data-at="0.25">Today 6:48 PM</p>
+                  <p class="b in" data-at="0.25">Hey it's Sophie from Hinge 😊 Still up for drinks this week?</p>
+                  <p class="b out" data-at="6.5">Definitely! How's Wednesday at 8? First round's on me.</p>
+                  <p class="stamp" data-at="6.75" data-until="9">Delivered</p>
+                  <p class="b in" data-at="9">Wednesday works! I'll hold you to that 😄</p>
+                  <p class="b out" data-at="10.5">Deal. See you Wednesday!</p>
+                  <p class="stamp" data-at="10.75">Delivered</p>
+                </div>
+              </div>
+              <div class="thread" data-chat="maya">
+                <p class="to">To: <b>Maya</b></p>
+                <div class="bubbles">
+                  <p class="time" data-at="1.15">Today 7:05 PM</p>
+                  <p class="b in" data-at="1.15">Maya from Hinge! So where are you taking me? 👀</p>
+                  <p class="b out" data-at="8.5">Somewhere with good cocktails and a jukebox. Friday at 8?</p>
+                  <p class="stamp" data-at="8.75" data-until="11">Delivered</p>
+                  <p class="b in" data-at="11">Ok you had me at jukebox 😏 Friday it is</p>
                 </div>
               </div>
               <div class="thread empty" data-chat="none">
@@ -228,27 +228,28 @@
           <div class="win-bar"><i></i><i></i><i></i><b>Claude</b></div>
           <div class="chat">
             <div class="chat-flow">
-              <p class="you" data-at="2"><span class="typed">Find a night next week that works for everyone in the dinner chat and lock it in.</span><span class="caret"></span></p>
+              <p class="you" data-at="2"><span class="typed">Set up drinks with Sophie and Maya this week, on different nights. Keep it fun.</span><span class="caret"></span></p>
 
               <div class="turn" data-at="3">
                 <span class="spark" aria-hidden="true"></span>
                 <div class="turn-body">
-                  <p class="tool" data-at="3.1"><img src="icon.png?v=4" alt="">Read the Dinner group<i></i></p>
+                  <p class="tool" data-at="3.1"><img src="icon.png?v=4" alt="">Read Sophie's conversation<i></i></p>
+                  <p class="tool" data-at="3.35"><img src="icon.png?v=4" alt="">Read Maya's conversation<i></i></p>
 
                   <div class="plan" data-at="4.1">
-                    <p class="plan-title">Next week</p>
+                    <p class="plan-title">This week</p>
                     <ol>
-                      <li><b>Tue</b><span>The one night all three can do</span></li>
-                      <li class="gap"><b></b><span><i class="travel"></i>Jess has pilates until 7:30</span></li>
-                      <li><b>8:00</b><span>Dinner, all four of you</span></li>
+                      <li><b>Wed</b><span>Drinks with Sophie, 8:00</span></li>
+                      <li class="gap"><b></b><span><i class="travel"></i>a night off in between</span></li>
+                      <li><b>Fri</b><span>Cocktails with Maya, 8:00</span></li>
                     </ol>
                   </div>
 
-                  <p class="tool send" data-at="5" data-ask="0"><img src="icon.png?v=4" alt=""><span>Text the group: waiting for you</span><i></i></p>
-                  <p class="tool send" data-at="7.6" data-ask="1"><img src="icon.png?v=4" alt=""><span>Text the group: waiting for you</span><i></i></p>
-                  <p class="tool send" data-at="9.4" data-ask="2"><img src="icon.png?v=4" alt=""><span>Text the group: waiting for you</span><i></i></p>
+                  <p class="tool send" data-at="5" data-ask="0"><img src="icon.png?v=4" alt=""><span>Text Sophie: waiting for you</span><i></i></p>
+                  <p class="tool send" data-at="7" data-ask="1"><img src="icon.png?v=4" alt=""><span>Text Maya: waiting for you</span><i></i></p>
+                  <p class="tool send" data-at="9.4" data-ask="2"><img src="icon.png?v=4" alt=""><span>Text Sophie: waiting for you</span><i></i></p>
 
-                  <p class="answer" data-at="11.3">Dinner is set for Tuesday at 8:30 at the Thai place, all four of you. Jess asked to push it half an hour, so I said yes.</p>
+                  <p class="answer" data-at="11.3">Both set: Sophie on Wednesday at 8, Maya on Friday at 8. You told Sophie the first round is on you, and Maya is expecting a jukebox.</p>
                 </div>
               </div>
             </div>
@@ -256,8 +257,8 @@
 
             <div class="alert" role="img" aria-label="Claude asks whether to send this text, with buttons Deny, Always allow and Allow once">
               <p class="alert-title"><img src="icon.png?v=4" alt="" width="18" height="18">Claude wants to send a text</p>
-              <p class="alert-to">To: Dinner (Priya, Tom, Jess)</p>
-              <p class="alert-text">How about Tuesday at 8?</p>
+              <p class="alert-to">To: Sophie</p>
+              <p class="alert-text">Definitely! How's Wednesday at 8?</p>
               <div class="alert-buttons">
                 <span class="ab">Deny</span>
                 <span class="ab">Always allow</span>

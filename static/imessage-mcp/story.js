@@ -106,20 +106,20 @@
         };
       },
     },
-    dinner: {
+    dates: {
       beats: [
-        [0, 'Someone suggests dinner next week.'],
-        [0, 'Everyone answers with a different night.'],
+        [0, 'A Hinge match texts you.'],
+        [0, 'Then another. Both want to meet this week.'],
         [0, 'Ask Claude once.'],
-        [0, 'Claude reads the chats you allow. The rest stay hidden.'],
-        [1, 'It finds the one night that works for everyone.'],
+        [0, 'Claude reads the threads you allow. The rest stay hidden.'],
+        [1, 'It puts the dates on different nights.'],
         [2, 'Before anything sends, Claude asks you.'],
-        [2, 'You click Allow. It goes to the group as you.'],
-        [2, 'The group replies. Claude drafts the answer.'],
+        [2, 'You click Allow. The text goes out as you.'],
         [2, 'Every text gets the same check.'],
-        [2, 'Then the plan changes. Claude keeps up.'],
+        [2, 'Nothing sends without your yes.'],
+        [2, 'Sophie writes back. Claude drafts the reply.'],
         [2, 'You allow it, and it sends.'],
-        [3, 'Dinner for four, sorted. You typed one sentence.'],
+        [3, 'Two dates set. You typed one sentence.'],
       ],
       asks: [
         {
@@ -127,64 +127,60 @@
           cursor: 5.7,
           press: 6.25,
           to: 6.5,
-          who: 'Dinner (Priya, Tom, Jess)',
-          tool: 'the group',
-          text: 'How about Tuesday at 8? It’s the one night we’re all free, and Jess is done with pilates by then.',
+          who: 'Sophie',
+          tool: 'Sophie',
+          text: 'Definitely! How’s Wednesday at 8? First round’s on me.',
         },
         {
-          from: 7.6,
-          cursor: 8,
-          press: 8.3,
+          from: 7,
+          cursor: 7.7,
+          press: 8.25,
           to: 8.5,
-          who: 'Dinner (Priya, Tom, Jess)',
-          tool: 'the group',
-          text: 'Same place works for me 🙌',
+          who: 'Maya',
+          tool: 'Maya',
+          text: 'Somewhere with good cocktails and a jukebox. Friday at 8?',
         },
         {
           from: 9.4,
           cursor: 9.85,
           press: 10.3,
           to: 10.5,
-          who: 'Dinner (Priya, Tom, Jess)',
-          tool: 'the group',
-          text: '8:30 it is. See everyone Tuesday!',
+          who: 'Sophie',
+          tool: 'Sophie',
+          text: 'Deal. See you Wednesday!',
         },
       ],
       thinking: [
         [3, 3.6],
         [4, 4.6],
-        [7.3, 7.6],
         [9, 9.4],
         [11, 11.3],
       ],
       chat: function(s) {
-        return s < 0.25 ? 'none' : 'dinner';
+        if (s < 0.25) {
+          return 'none';
+        }
+        return (s >= 7 && s < 9) || s >= 11 ? 'maya' : 'sophie';
       },
-      unread: function() {
-        return {};
+      unread: function(s, chat) {
+        return { maya: chat !== 'maya' && s < 7, sophie: chat !== 'sophie' && s >= 9 && s < 9.4 };
       },
       previews: function(s) {
         return {
-          dinner:
-            s < 1
-              ? 'Priya: Dinner next week? I can do Tue or Thu'
-              : s < 1.4
-                ? 'Tom: Thu’s out for me. Tue or Wed?'
-                : s < 6.5
-                  ? 'Jess: Wed’s bad. Tue I’m at pilates till 7:30'
-                  : s < 7
-                    ? 'You: How about Tuesday at 8?'
-                    : s < 7.3
-                      ? 'Tom: Tue at 8 👍'
-                      : s < 8.5
-                        ? 'Priya: Yes! Same Thai place as last time?'
-                        : s < 9
-                          ? 'You: Same place works for me 🙌'
-                          : s < 10.5
-                            ? 'Jess: Can we make it 8:30?'
-                            : s < 11
-                              ? 'You: 8:30 it is. See everyone Tuesday!'
-                              : 'Priya: See you there!',
+          sophie:
+            s < 6.5
+              ? 'Hey it’s Sophie from Hinge 😊'
+              : s < 9
+                ? 'You: Definitely! How’s Wednesday at 8?'
+                : s < 10.5
+                  ? 'Wednesday works! I’ll hold you to that 😄'
+                  : 'You: Deal. See you Wednesday!',
+          maya:
+            s < 8.5
+              ? 'Maya from Hinge! So where are you taking me? 👀'
+              : s < 11
+                ? 'You: Somewhere with good cocktails…'
+                : 'Ok you had me at jukebox 😏',
         };
       },
     },
