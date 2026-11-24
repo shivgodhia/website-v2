@@ -19,100 +19,222 @@
   story.style.setProperty('--len', LEN);
   document.documentElement.classList.add('js');
 
-  const desk = $('#desk');
   const fit = $('#desk-fit');
   const caption = $('#caption');
   const pillars = $$('.pillars li');
-  const timed = $$('[data-at]', story).map(function(el) {
-    return { el: el, at: +el.dataset.at, until: el.dataset.until ? +el.dataset.until : Infinity };
-  });
-  const rows = {};
-  const threads = {};
-  $$('.row', story).forEach(function(r) {
-    rows[r.dataset.chat] = r;
-  });
-  $$('.thread', story).forEach(function(t) {
-    threads[t.dataset.chat] = t;
-  });
-  const typed = $('#typed');
-  const caret = $('#caret');
-  const spark = $('#spark');
-  const travel = $('#travel');
-  const PROMPT = typed.textContent;
-  const alertBox = $('#alert');
-  const alertTo = $('#alert-to');
-  const alertText = $('#alert-text');
-  const cursor = $('#cursor');
-  const allow = $('#ab-send');
-  const preSarah = $('#pre-sarah');
-  const preMike = $('#pre-mike');
+  const tabs = $$('.examples .ex');
 
-  // One line per beat: which of the three jobs it shows, and what to say.
-  const BEATS = [
-    [0, 'A text comes in about an apartment.'],
-    [0, 'Then another. Same evening, across town.'],
-    [0, 'Ask Claude once.'],
-    [0, 'Claude reads the threads you allow. The rest stay hidden.'],
-    [1, 'It works out an order that leaves you time to travel.'],
-    [2, 'Before anything sends, Claude asks you.'],
-    [2, 'You click Allow. The text goes out as you.'],
-    [2, 'Every text gets the same check.'],
-    [2, 'Nothing sends without your yes.'],
-    [2, 'Sarah writes back. Claude drafts the reply.'],
-    [2, 'You allow it, and it sends.'],
-    [3, 'Two viewings booked. You typed one sentence.'],
-  ];
+  // Each example is the same twelve beats with its own words. The engine below
+  // only needs to know what each beat says, when Claude asks, which chat is
+  // open and what the previews read.
+  const EXAMPLES = {
+    rent: {
+      beats: [
+        [0, 'A text comes in about an apartment.'],
+        [0, 'Then another. Same evening, across town.'],
+        [0, 'Ask Claude once.'],
+        [0, 'Claude reads the threads you allow. The rest stay hidden.'],
+        [1, 'It works out an order that leaves you time to travel.'],
+        [2, 'Before anything sends, Claude asks you.'],
+        [2, 'You click Allow. The text goes out as you.'],
+        [2, 'Every text gets the same check.'],
+        [2, 'Nothing sends without your yes.'],
+        [2, 'Sarah writes back. Claude drafts the reply.'],
+        [2, 'You allow it, and it sends.'],
+        [3, 'Two viewings booked. You typed one sentence.'],
+      ],
+      asks: [
+        {
+          from: 5,
+          cursor: 5.7,
+          press: 6.25,
+          to: 6.5,
+          who: 'Sarah',
+          tool: 'Sarah',
+          text: '6pm works. See you Thursday!',
+        },
+        {
+          from: 7,
+          cursor: 7.7,
+          press: 8.25,
+          to: 8.5,
+          who: 'Mike',
+          tool: 'Mike',
+          text: 'Could we do 7:15? I’m coming from another viewing across town.',
+        },
+        {
+          from: 9.4,
+          cursor: 9.85,
+          press: 10.3,
+          to: 10.5,
+          who: 'Sarah',
+          tool: 'Sarah',
+          text: 'Will do, thanks!',
+        },
+      ],
+      thinking: [
+        [3, 3.6],
+        [4, 4.6],
+        [9, 9.4],
+        [11, 11.3],
+      ],
+      chat: function(s) {
+        if (s < 0.25) {
+          return 'none';
+        }
+        return (s >= 7 && s < 9) || s >= 11 ? 'mike' : 'sarah';
+      },
+      unread: function(s, chat) {
+        return { mike: chat !== 'mike' && s < 7, sarah: chat !== 'sarah' && s >= 9 && s < 9.4 };
+      },
+      previews: function(s) {
+        return {
+          sarah:
+            s < 6.5
+              ? 'Hi! The 2BR on Elm St is still available.'
+              : s < 9
+                ? 'You: 6pm works. See you Thursday!'
+                : s < 10.5
+                  ? 'Perfect. Buzz 4B when you get here.'
+                  : 'You: Will do, thanks!',
+          mike:
+            s < 8.5
+              ? 'Oak Ave studio: I’m showing it Thursday 5 to 8.'
+              : s < 11
+                ? 'You: Could we do 7:15?'
+                : '7:15 works 👍',
+        };
+      },
+    },
+    dinner: {
+      beats: [
+        [0, 'Someone suggests dinner next week.'],
+        [0, 'Everyone answers with a different night.'],
+        [0, 'Ask Claude once.'],
+        [0, 'Claude reads the chats you allow. The rest stay hidden.'],
+        [1, 'It finds the one night that works for everyone.'],
+        [2, 'Before anything sends, Claude asks you.'],
+        [2, 'You click Allow. It goes to the group as you.'],
+        [2, 'The group replies. Claude drafts the answer.'],
+        [2, 'Every text gets the same check.'],
+        [2, 'Then the plan changes. Claude keeps up.'],
+        [2, 'You allow it, and it sends.'],
+        [3, 'Dinner for four, sorted. You typed one sentence.'],
+      ],
+      asks: [
+        {
+          from: 5,
+          cursor: 5.7,
+          press: 6.25,
+          to: 6.5,
+          who: 'Dinner (Priya, Tom, Jess)',
+          tool: 'the group',
+          text: 'How about Tuesday at 8? It’s the one night we’re all free, and Jess is done with pilates by then.',
+        },
+        {
+          from: 7.6,
+          cursor: 8,
+          press: 8.3,
+          to: 8.5,
+          who: 'Dinner (Priya, Tom, Jess)',
+          tool: 'the group',
+          text: 'Same place works for me 🙌',
+        },
+        {
+          from: 9.4,
+          cursor: 9.85,
+          press: 10.3,
+          to: 10.5,
+          who: 'Dinner (Priya, Tom, Jess)',
+          tool: 'the group',
+          text: '8:30 it is. See everyone Tuesday!',
+        },
+      ],
+      thinking: [
+        [3, 3.6],
+        [4, 4.6],
+        [7.3, 7.6],
+        [9, 9.4],
+        [11, 11.3],
+      ],
+      chat: function(s) {
+        return s < 0.25 ? 'none' : 'dinner';
+      },
+      unread: function() {
+        return {};
+      },
+      previews: function(s) {
+        return {
+          dinner:
+            s < 1
+              ? 'Priya: Dinner next week? I can do Tue or Thu'
+              : s < 1.4
+                ? 'Tom: Thu’s out for me. Tue or Wed?'
+                : s < 6.5
+                  ? 'Jess: Wed’s bad. Tue I’m at pilates till 7:30'
+                  : s < 7
+                    ? 'You: How about Tuesday at 8?'
+                    : s < 7.3
+                      ? 'Tom: Tue at 8 👍'
+                      : s < 8.5
+                        ? 'Priya: Yes! Same Thai place as last time?'
+                        : s < 9
+                          ? 'You: Same place works for me 🙌'
+                          : s < 10.5
+                            ? 'Jess: Can we make it 8:30?'
+                            : s < 11
+                              ? 'You: 8:30 it is. See everyone Tuesday!'
+                              : 'Priya: See you there!',
+        };
+      },
+    },
+  };
 
-  // The three times Claude asks: when, to whom, what.
-  const ASKS = [
-    {
-      from: 5,
-      cursor: 5.7,
-      press: 6.25,
-      to: 6.5,
-      who: 'Sarah',
-      text: '6pm works. See you Thursday!',
-      tool: '#send-1',
-    },
-    {
-      from: 7,
-      cursor: 7.7,
-      press: 8.25,
-      to: 8.5,
-      who: 'Mike',
-      text: 'Could we do 7:15? I’m coming from another viewing across town.',
-      tool: '#send-2',
-    },
-    {
-      from: 9.4,
-      cursor: 9.85,
-      press: 10.3,
-      to: 10.5,
-      who: 'Sarah',
-      text: 'Will do, thanks!',
-      tool: '#send-3',
-    },
-  ];
-  ASKS.forEach(function(a) {
-    a.toolEl = $(a.tool);
-    a.label = $('span', a.toolEl);
+  // Find each example's pieces inside its own desktop.
+  Object.keys(EXAMPLES).forEach(function(key) {
+    const ex = EXAMPLES[key];
+    const desk = $(`.desk[data-ex="${key}"]`);
+    ex.desk = desk;
+    ex.timed = $$('[data-at]', desk).map(function(el) {
+      return { el: el, at: +el.dataset.at, until: el.dataset.until ? +el.dataset.until : Infinity };
+    });
+    ex.rows = {};
+    ex.locks = [];
+    $$('.row', desk).forEach(function(r) {
+      ex.rows[r.dataset.chat] = r;
+      if (r.dataset.lock) {
+        ex.locks.push({ el: r, at: +r.dataset.lock });
+      }
+    });
+    ex.threads = {};
+    $$('.thread', desk).forEach(function(t) {
+      ex.threads[t.dataset.chat] = t;
+    });
+    ex.pre = {};
+    $$('[data-pre]', desk).forEach(function(el) {
+      ex.pre[el.dataset.pre] = el;
+    });
+    ex.typed = $('.typed', desk);
+    ex.prompt = ex.typed.textContent;
+    ex.caret = $('.caret', desk);
+    ex.spark = $('.spark', desk);
+    ex.travel = $('.travel', desk);
+    ex.alertBox = $('.alert', desk);
+    ex.alertTo = $('.alert-to', desk);
+    ex.alertText = $('.alert-text', desk);
+    ex.cursor = $('.cursor', desk);
+    ex.allow = $('.ab.primary', desk);
+    $$('[data-ask]', desk).forEach(function(el) {
+      const a = ex.asks[+el.dataset.ask];
+      a.toolEl = el;
+      a.label = $('span', el);
+    });
   });
+
+  let ex = EXAMPLES.rent;
 
   function clamp(v) {
     return v < 0 ? 0 : v > 1 ? 1 : v;
-  }
-
-  function activeChat(s) {
-    if (s < 0.25) {
-      return 'none';
-    }
-    if (s >= 7 && s < 9) {
-      return 'mike';
-    }
-    if (s >= 11) {
-      return 'mike';
-    }
-    return 'sarah';
   }
 
   // On a phone only one window fits, so show the one the beat is about.
@@ -133,7 +255,7 @@
       return 'claude';
     }
     // Claude while it is asking, Messages to watch the text go out.
-    const asking = ASKS.some(function(a) {
+    const asking = ex.asks.some(function(a) {
       return s >= a.from && s < a.to;
     });
     return asking ? 'claude' : 'msg';
@@ -143,88 +265,92 @@
   let lastAsk = null;
   function render(s) {
     const beat = Math.min(STAGES - 1, Math.floor(s));
+    const desk = ex.desk;
 
-    timed.forEach(function(t) {
+    ex.timed.forEach(function(t) {
       t.el.classList.toggle('on', s >= t.at && s < t.until);
     });
 
     if (beat !== lastBeat) {
-      caption.textContent = BEATS[beat][1];
+      caption.textContent = ex.beats[beat][1];
       if (lastBeat !== -1) {
         caption.classList.remove('swap');
         void caption.offsetWidth;
         caption.classList.add('swap');
       }
-      const pillar = BEATS[beat][0];
+      const pillar = ex.beats[beat][0];
       pillars.forEach(function(li, i) {
         li.classList.toggle('now', i === pillar);
         li.classList.toggle('done', i < pillar || pillar === 3);
       });
       lastBeat = beat;
     }
+    // At the end of one example, point at the other.
+    tabs.forEach(function(t) {
+      t.classList.toggle('nudge', s >= 11.3 && t.getAttribute('aria-selected') !== 'true');
+    });
 
     // Messages: which thread is open, previews, unread dots, what is hidden.
-    const chat = activeChat(s);
-    Object.keys(threads).forEach(function(k) {
-      threads[k].classList.toggle('active', k === chat);
+    const chat = ex.chat(s);
+    Object.keys(ex.threads).forEach(function(k) {
+      ex.threads[k].classList.toggle('active', k === chat);
     });
-    Object.keys(rows).forEach(function(k) {
-      rows[k].classList.toggle('active', k === chat);
+    Object.keys(ex.rows).forEach(function(k) {
+      ex.rows[k].classList.toggle('active', k === chat);
     });
-    rows.mike.classList.toggle('unread', chat !== 'mike' && s < 7);
-    rows.sarah.classList.toggle('unread', chat !== 'sarah' && s >= 9 && s < 9.4);
-    rows.mom.classList.toggle('locked', s >= 3.55);
-    rows.crew.classList.toggle('locked', s >= 3.7);
-    preSarah.textContent =
-      s < 6.5
-        ? 'Hi! The 2BR on Elm St is still available.'
-        : s < 9
-          ? 'You: 6pm works. See you Thursday!'
-          : s < 10.5
-            ? 'Perfect. Buzz 4B when you get here.'
-            : 'You: Will do, thanks!';
-    preMike.textContent =
-      s < 8.5
-        ? 'Oak Ave studio: I’m showing it Thursday 5 to 8.'
-        : s < 11
-          ? 'You: Could we do 7:15?'
-          : '7:15 works 👍';
+    const unread = ex.unread(s, chat);
+    Object.keys(ex.rows).forEach(function(k) {
+      ex.rows[k].classList.toggle('unread', !!unread[k]);
+    });
+    ex.locks.forEach(function(l) {
+      l.el.classList.toggle('locked', s >= l.at);
+    });
+    const previews = ex.previews(s);
+    Object.keys(previews).forEach(function(k) {
+      ex.pre[k].textContent = previews[k];
+    });
 
     // Claude: the request types itself as you scroll through its beat.
-    typed.textContent =
-      s >= 2.85 ? PROMPT : PROMPT.slice(0, Math.round(clamp((s - 2) / 0.8) * PROMPT.length));
-    caret.classList.toggle('off', s >= 2.95);
-    const thinking =
-      (s >= 3 && s < 3.6) || (s >= 4 && s < 4.6) || (s >= 9 && s < 9.4) || (s >= 11 && s < 11.3);
-    spark.classList.toggle('busy', thinking);
-    travel.style.setProperty('--g', clamp((s - 4.25) / 0.5).toFixed(3));
+    ex.typed.textContent =
+      s >= 2.85
+        ? ex.prompt
+        : ex.prompt.slice(0, Math.round(clamp((s - 2) / 0.8) * ex.prompt.length));
+    ex.caret.classList.toggle('off', s >= 2.95);
+    const thinking = ex.thinking.some(function(r) {
+      return s >= r[0] && s < r[1];
+    });
+    ex.spark.classList.toggle('busy', thinking);
+    ex.travel.style.setProperty('--g', clamp((s - 4.25) / 0.5).toFixed(3));
 
     // Claude's permission prompt.
     let ask = null;
-    ASKS.forEach(function(a) {
+    ex.asks.forEach(function(a) {
       const waiting = s >= a.from && s < a.to;
       if (waiting) {
         ask = a;
       }
       a.toolEl.classList.toggle('wait', waiting);
-      a.label.textContent = `Text ${a.who}${waiting ? ': waiting for you' : ': sent'}`;
+      a.label.textContent = `Text ${a.tool}${waiting ? ': waiting for you' : ': sent'}`;
     });
-    alertBox.classList.toggle('show', !!ask);
+    ex.alertBox.classList.toggle('show', !!ask);
     desk.classList.toggle('asking', !!ask);
     if (ask) {
       if (ask !== lastAsk) {
-        alertTo.textContent = `To: ${ask.who}`;
-        alertText.textContent = ask.text;
+        ex.alertTo.textContent = `To: ${ask.who}`;
+        ex.alertText.textContent = ask.text;
       }
+      const allow = ex.allow;
       const moving = s >= ask.cursor;
-      const x = moving ? allow.offsetLeft + allow.offsetWidth * 0.86 : alertBox.offsetWidth * 0.3;
+      const x = moving
+        ? allow.offsetLeft + allow.offsetWidth * 0.86
+        : ex.alertBox.offsetWidth * 0.3;
       const y = moving ? allow.offsetTop + allow.offsetHeight * 0.6 : -34;
-      cursor.style.transform = `translate(${x.toFixed(0)}px,${y.toFixed(0)}px)`;
-      cursor.classList.toggle('on', s >= ask.cursor - 0.15);
+      ex.cursor.style.transform = `translate(${x.toFixed(0)}px,${y.toFixed(0)}px)`;
+      ex.cursor.classList.toggle('on', s >= ask.cursor - 0.15);
       allow.classList.toggle('press', s >= ask.press);
     } else {
-      cursor.classList.remove('on');
-      allow.classList.remove('press');
+      ex.cursor.classList.remove('on');
+      ex.allow.classList.remove('press');
     }
     lastAsk = ask;
 
@@ -233,6 +359,7 @@
 
   // Scale the desktop to whatever room the pinned screen has left.
   function resize() {
+    const desk = ex.desk;
     desk.style.setProperty('--s', 1);
     const w = desk.offsetWidth;
     const h = desk.offsetHeight;
@@ -284,6 +411,35 @@
   } else if (toggle) {
     toggle.classList.add('on');
   }
+
+  // Switch examples. If you are partway through the story, start the new one
+  // from its first beat.
+  function show(key) {
+    ex = EXAMPLES[key];
+    Object.keys(EXAMPLES).forEach(function(k) {
+      const on = k === key;
+      EXAMPLES[k].desk.hidden = !on;
+      EXAMPLES[k].desk.classList.toggle('active', on);
+    });
+    tabs.forEach(function(t) {
+      t.setAttribute('aria-selected', t.dataset.ex === key ? 'true' : 'false');
+    });
+    lastBeat = -1;
+    lastAsk = null;
+    resize();
+    if (story.getBoundingClientRect().top < 0) {
+      window.scrollTo({ top: story.offsetTop + 1, behavior: 'instant' });
+    }
+    update();
+  }
+  tabs.forEach(function(t) {
+    t.addEventListener('click', function() {
+      if (t.getAttribute('aria-selected') !== 'true') {
+        show(t.dataset.ex);
+      }
+    });
+  });
+  window.showExample = show;
 
   // Lets tests and screenshots jump to a beat: storyAt(6.6)
   window.storyAt = function(s) {

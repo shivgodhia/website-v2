@@ -3,26 +3,26 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>iMessage MCP: let Claude answer your texts</title>
-<meta name="description" content="A free Mac app that lets Claude read your iMessages and reply for you. Claude asks before it sends.">
+<title>iMessage MCP: Claude texts for you, once you say yes</title>
+<meta name="description" content="A free Mac app that lets Claude send iMessages for you. You approve every text before it goes out.">
 <link rel="canonical" href="https://www.shivgodhia.com/imessage-mcp/">
-<meta property="og:title" content="iMessage MCP: let Claude answer your texts">
-<meta property="og:description" content="A free Mac app that lets Claude read your iMessages and reply for you. Claude asks before it sends.">
-<meta property="og:image" content="https://www.shivgodhia.com/imessage-mcp/icon.png?v=3">
+<meta property="og:title" content="iMessage MCP: Claude texts for you, once you say yes">
+<meta property="og:description" content="A free Mac app that lets Claude send iMessages for you. You approve every text before it goes out.">
+<meta property="og:image" content="https://www.shivgodhia.com/imessage-mcp/icon.png?v=4">
 <meta property="og:url" content="https://www.shivgodhia.com/imessage-mcp/">
 <meta name="twitter:card" content="summary">
 <meta name="theme-color" content="#F6F7F9">
-<link rel="icon" href="icon.png?v=3">
+<link rel="icon" href="icon.png?v=4">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=3">
+<link rel="stylesheet" href="style.css?v=4">
 </head>
 <body>
 
 <header class="top">
   <a class="brand" href="#top" aria-label="iMessage MCP">
-    <img src="icon.png?v=3" alt="" width="36" height="36">
+    <img src="icon.png?v=4" alt="" width="36" height="36">
     <span>iMessage MCP</span>
   </a>
   <nav>
@@ -36,10 +36,10 @@
 <!-- The headline is a text exchange: the pitch arrives, you answer it. -->
 <section class="hero">
   <h1>
-    <span class="bubble in">Let Claude answer your&nbsp;texts.</span>
-    <span class="bubble out">You just say&nbsp;yes.</span>
+    <span class="bubble in">Claude can text people for&nbsp;you.</span>
+    <span class="bubble out">Only once you say&nbsp;yes.</span>
   </h1>
-  <p class="lede">A free Mac app that lets Claude read your iMessages and reply for you. Claude asks before it sends.</p>
+  <p class="lede">A free Mac app that connects Claude to iMessage. Claude reads the conversations you allow and writes your replies. Every text waits for you to approve it before it sends.</p>
   <div class="cta">
     <a class="btn" href="https://github.com/shivgodhia/imessage-mcp/releases/latest/download/iMessage-MCP.dmg">Download for Mac</a>
     <a class="quiet" href="https://github.com/shivgodhia/imessage-mcp">See the code on GitHub</a>
@@ -48,9 +48,14 @@
 </section>
 
 <!-- One Mac desktop, pinned. Scroll position decides what is on it. -->
-<section class="story" id="story" aria-label="How it works: booking two apartment viewings">
+<section class="story" id="story" aria-label="Two examples of Claude texting for you">
   <div class="pin">
     <div class="story-head">
+      <div class="examples" role="tablist" aria-label="Examples">
+        <span class="ex-label">Two examples</span>
+        <button type="button" role="tab" class="ex" data-ex="rent" aria-selected="true">Booking viewings</button>
+        <button type="button" role="tab" class="ex" data-ex="dinner" aria-selected="false">Planning a dinner</button>
+      </div>
       <ol class="pillars" aria-hidden="true">
         <li data-pillar="0">Reads</li>
         <li data-pillar="1">Replies</li>
@@ -60,26 +65,26 @@
     </div>
 
     <div class="desk-fit" id="desk-fit">
-      <div class="desk" id="desk" data-focus="msg">
+      <div class="desk active" data-ex="rent" data-focus="msg">
 
         <!-- Messages -->
-        <div class="win msg" id="msg">
+        <div class="win msg">
           <div class="win-bar"><i></i><i></i><i></i><b>Messages</b></div>
           <div class="msg-body">
             <ul class="msg-list">
               <li class="row" data-chat="sarah" data-at="0.25">
                 <span class="av a1">S</span>
-                <span class="who"><b>Sarah</b><span class="pre" id="pre-sarah">Perfect. Buzz 4B when you get here.</span></span>
+                <span class="who"><b>Sarah</b><span class="pre" data-pre="sarah">Perfect. Buzz 4B when you get here.</span></span>
               </li>
               <li class="row" data-chat="mike" data-at="1.15">
                 <span class="av a2">M</span>
-                <span class="who"><b>Mike</b><span class="pre" id="pre-mike">7:15 works 👍</span></span>
+                <span class="who"><b>Mike</b><span class="pre" data-pre="mike">7:15 works 👍</span></span>
               </li>
-              <li class="row private" data-chat="mom">
+              <li class="row private" data-chat="mom" data-lock="3.55">
                 <span class="av a3">M</span>
                 <span class="who"><b>Mom <em class="badge lock" data-at="3.55">Hidden from Claude</em></b><span class="pre">Call me when you can ❤️</span></span>
               </li>
-              <li class="row private" data-chat="crew">
+              <li class="row private" data-chat="crew" data-lock="3.7">
                 <span class="av a4">W</span>
                 <span class="who"><b>Weekend crew <em class="badge lock" data-at="3.7">Hidden from Claude</em></b><span class="pre">who's bringing the speaker</span></span>
               </li>
@@ -116,30 +121,30 @@
         </div>
 
         <!-- Claude -->
-        <div class="win claude" id="claude">
+        <div class="win claude">
           <div class="win-bar"><i></i><i></i><i></i><b>Claude</b></div>
           <div class="chat">
             <div class="chat-flow">
-              <p class="you" data-at="2"><span id="typed">Book both viewings for Thursday. Leave me time to get between them.</span><span class="caret" id="caret"></span></p>
+              <p class="you" data-at="2"><span class="typed">Book both viewings for Thursday. Leave me time to get between them.</span><span class="caret"></span></p>
 
               <div class="turn" data-at="3">
-                <span class="spark" id="spark" aria-hidden="true"></span>
+                <span class="spark" aria-hidden="true"></span>
                 <div class="turn-body">
-                  <p class="tool" data-at="3.1"><img src="icon.png?v=3" alt="">Read Sarah's conversation<i></i></p>
-                  <p class="tool" data-at="3.35"><img src="icon.png?v=3" alt="">Read Mike's conversation<i></i></p>
+                  <p class="tool" data-at="3.1"><img src="icon.png?v=4" alt="">Read Sarah's conversation<i></i></p>
+                  <p class="tool" data-at="3.35"><img src="icon.png?v=4" alt="">Read Mike's conversation<i></i></p>
 
                   <div class="plan" data-at="4.1">
                     <p class="plan-title">Thursday evening</p>
                     <ol>
                       <li><b>6:00</b><span>Elm St with Sarah</span></li>
-                      <li class="gap"><b></b><span><i id="travel"></i>about 25 min across town</span></li>
+                      <li class="gap"><b></b><span><i class="travel"></i>about 25 min across town</span></li>
                       <li><b>7:15</b><span>Oak Ave with Mike</span></li>
                     </ol>
                   </div>
 
-                  <p class="tool send" data-at="5" id="send-1"><img src="icon.png?v=3" alt=""><span>Text Sarah: waiting for you</span><i></i></p>
-                  <p class="tool send" data-at="7" id="send-2"><img src="icon.png?v=3" alt=""><span>Text Mike: waiting for you</span><i></i></p>
-                  <p class="tool send" data-at="9.4" id="send-3"><img src="icon.png?v=3" alt=""><span>Text Sarah: waiting for you</span><i></i></p>
+                  <p class="tool send" data-at="5" data-ask="0"><img src="icon.png?v=4" alt=""><span>Text Sarah: waiting for you</span><i></i></p>
+                  <p class="tool send" data-at="7" data-ask="1"><img src="icon.png?v=4" alt=""><span>Text Mike: waiting for you</span><i></i></p>
+                  <p class="tool send" data-at="9.4" data-ask="2"><img src="icon.png?v=4" alt=""><span>Text Sarah: waiting for you</span><i></i></p>
 
                   <p class="answer" data-at="11.3">Both booked for Thursday: 6:00 at Elm St with Sarah, then 7:15 at Oak Ave with Mike. Buzz 4B at Sarah's.</p>
                 </div>
@@ -148,16 +153,117 @@
             <div class="composer"><span>Reply to Claude</span></div>
 
             <!-- Claude's own permission prompt: the only approval there is -->
-            <div class="alert" id="alert" role="img" aria-label="Claude asks whether to send this text, with buttons Deny, Always allow and Allow once">
-              <p class="alert-title"><img src="icon.png?v=3" alt="" width="18" height="18">Claude wants to send a text</p>
-              <p class="alert-to" id="alert-to">To: Sarah</p>
-              <p class="alert-text" id="alert-text">6pm works. See you Thursday!</p>
+            <div class="alert" role="img" aria-label="Claude asks whether to send this text, with buttons Deny, Always allow and Allow once">
+              <p class="alert-title"><img src="icon.png?v=4" alt="" width="18" height="18">Claude wants to send a text</p>
+              <p class="alert-to">To: Sarah</p>
+              <p class="alert-text">6pm works. See you Thursday!</p>
               <div class="alert-buttons">
                 <span class="ab">Deny</span>
                 <span class="ab">Always allow</span>
-                <span class="ab primary" id="ab-send">Allow once</span>
+                <span class="ab primary">Allow once</span>
               </div>
-              <span class="cursor" id="cursor" aria-hidden="true"></span>
+              <span class="cursor" aria-hidden="true"></span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Example two: one group chat, everyone free on a different night -->
+      <div class="desk" data-ex="dinner" data-focus="msg" hidden>
+
+        <div class="win msg">
+          <div class="win-bar"><i></i><i></i><i></i><b>Messages</b></div>
+          <div class="msg-body">
+            <ul class="msg-list">
+              <li class="row" data-chat="dinner" data-at="0.25">
+                <span class="av">🍝</span>
+                <span class="who"><b>Dinner</b><span class="pre" data-pre="dinner">Priya: See you there!</span></span>
+              </li>
+              <li class="row private" data-chat="mom" data-lock="3.55">
+                <span class="av">M</span>
+                <span class="who"><b>Mom <em class="badge lock" data-at="3.55">Hidden from Claude</em></b><span class="pre">Call me when you can ❤️</span></span>
+              </li>
+              <li class="row private" data-chat="work" data-lock="3.7">
+                <span class="av">A</span>
+                <span class="who"><b>Alex <em class="badge lock" data-at="3.7">Hidden from Claude</em></b><span class="pre">can you look at the deck tonight?</span></span>
+              </li>
+            </ul>
+
+            <div class="threads">
+              <div class="thread" data-chat="dinner">
+                <p class="to">To: <b>Priya, Tom, Jess</b></p>
+                <div class="bubbles">
+                  <p class="time" data-at="0.25">Today 2:41 PM</p>
+                  <p class="from" data-at="0.25">Priya</p>
+                  <p class="b in" data-at="0.25">Dinner next week? I can do Tue or Thu</p>
+                  <p class="from" data-at="1">Tom</p>
+                  <p class="b in" data-at="1">Thu's out for me. Tue or Wed?</p>
+                  <p class="from" data-at="1.4">Jess</p>
+                  <p class="b in" data-at="1.4">Wed's bad. Tue I'm at pilates till 7:30</p>
+                  <p class="b out" data-at="6.5">How about Tuesday at 8? It's the one night we're all free, and Jess is done with pilates by then.</p>
+                  <p class="stamp" data-at="6.75" data-until="7">Delivered</p>
+                  <p class="from" data-at="7">Tom</p>
+                  <p class="b in" data-at="7">Tue at 8 👍</p>
+                  <p class="from" data-at="7.3">Priya</p>
+                  <p class="b in" data-at="7.3">Yes! Same Thai place as last time?</p>
+                  <p class="b out" data-at="8.5">Same place works for me 🙌</p>
+                  <p class="stamp" data-at="8.75" data-until="9">Delivered</p>
+                  <p class="from" data-at="9">Jess</p>
+                  <p class="b in" data-at="9">Can we make it 8:30? Pilates sometimes runs over 😅</p>
+                  <p class="b out" data-at="10.5">8:30 it is. See everyone Tuesday!</p>
+                  <p class="stamp" data-at="10.75" data-until="11">Delivered</p>
+                  <p class="from" data-at="11">Priya</p>
+                  <p class="b in" data-at="11">See you there!</p>
+                </div>
+              </div>
+              <div class="thread empty" data-chat="none">
+                <p class="hint">No conversation selected</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="win claude">
+          <div class="win-bar"><i></i><i></i><i></i><b>Claude</b></div>
+          <div class="chat">
+            <div class="chat-flow">
+              <p class="you" data-at="2"><span class="typed">Find a night next week that works for everyone in the dinner chat and lock it in.</span><span class="caret"></span></p>
+
+              <div class="turn" data-at="3">
+                <span class="spark" aria-hidden="true"></span>
+                <div class="turn-body">
+                  <p class="tool" data-at="3.1"><img src="icon.png?v=4" alt="">Read the Dinner group<i></i></p>
+
+                  <div class="plan" data-at="4.1">
+                    <p class="plan-title">Next week</p>
+                    <ol>
+                      <li><b>Tue</b><span>The one night all three can do</span></li>
+                      <li class="gap"><b></b><span><i class="travel"></i>Jess has pilates until 7:30</span></li>
+                      <li><b>8:00</b><span>Dinner, all four of you</span></li>
+                    </ol>
+                  </div>
+
+                  <p class="tool send" data-at="5" data-ask="0"><img src="icon.png?v=4" alt=""><span>Text the group: waiting for you</span><i></i></p>
+                  <p class="tool send" data-at="7.6" data-ask="1"><img src="icon.png?v=4" alt=""><span>Text the group: waiting for you</span><i></i></p>
+                  <p class="tool send" data-at="9.4" data-ask="2"><img src="icon.png?v=4" alt=""><span>Text the group: waiting for you</span><i></i></p>
+
+                  <p class="answer" data-at="11.3">Dinner is set for Tuesday at 8:30 at the Thai place, all four of you. Jess asked to push it half an hour, so I said yes.</p>
+                </div>
+              </div>
+            </div>
+            <div class="composer"><span>Reply to Claude</span></div>
+
+            <div class="alert" role="img" aria-label="Claude asks whether to send this text, with buttons Deny, Always allow and Allow once">
+              <p class="alert-title"><img src="icon.png?v=4" alt="" width="18" height="18">Claude wants to send a text</p>
+              <p class="alert-to">To: Dinner (Priya, Tom, Jess)</p>
+              <p class="alert-text">How about Tuesday at 8?</p>
+              <div class="alert-buttons">
+                <span class="ab">Deny</span>
+                <span class="ab">Always allow</span>
+                <span class="ab primary">Allow once</span>
+              </div>
+              <span class="cursor" aria-hidden="true"></span>
             </div>
           </div>
         </div>
@@ -172,7 +278,7 @@
   <ol class="steps">
     <li>
       <div class="vis drag" aria-hidden="true">
-        <img src="icon.png?v=3" alt="">
+        <img src="icon.png?v=4" alt="">
         <svg viewBox="0 0 60 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h48M42 4l10 8-10 8"/></svg>
         <span class="folder"><i></i></span>
       </div>
@@ -182,7 +288,7 @@
     <li>
       <div class="vis open" aria-hidden="true">
         <div class="mini-alert">
-          <img src="icon.png?v=3" alt="">
+          <img src="icon.png?v=4" alt="">
           <b>One switch left</b>
           <span>Open Settings</span>
         </div>
@@ -193,7 +299,7 @@
     <li>
       <div class="vis switch" aria-hidden="true">
         <div class="setting">
-          <img src="icon.png?v=3" alt="">
+          <img src="icon.png?v=4" alt="">
           <span>iMessage MCP</span>
           <i class="toggle" id="toggle"></i>
         </div>
@@ -244,6 +350,6 @@
   <p class="fine">Not affiliated with Apple or Anthropic. iMessage is a trademark of Apple Inc. Claude is a trademark of Anthropic.</p>
 </footer>
 
-<script src="story.js?v=3"></script>
+<script src="story.js?v=4"></script>
 </body>
 </html>
